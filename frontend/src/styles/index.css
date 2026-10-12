@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+}
+
+/* RTL Helpers for Arabic */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .font-mono {
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Print Stylesheet for 80mm Labels and A4/A5 Bons */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print-content, #print-content * {
+    visibility: visible;
+  }
+  #print-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
