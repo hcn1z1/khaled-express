@@ -1,0 +1,642 @@
+{
+  "url": "http://localhost:3000",
+  "codeDirectory": "x:/dev/khaled-express/customer-web/src",
+  "timestamp": "2026-10-12T14:24:44.555Z",
+  "screenshot": {
+    "base64": "[OMITTED]",
+    "mimeType": "image/png",
+    "width": 1440,
+    "height": 900,
+    "url": "http://localhost:3000",
+    "timestamp": "2026-10-12T14:24:40.524Z"
+  },
+  "accessibility": {
+    "url": "http://localhost:3000",
+    "timestamp": "2026-10-12T14:24:42.567Z",
+    "violations": [],
+    "passes": 37,
+    "incomplete": 1,
+    "inapplicable": 53
+  },
+  "performance": {
+    "url": "http://localhost:3000",
+    "timestamp": "2026-10-12T14:24:44.543Z",
+    "loadTime": 264.3999999985099,
+    "domContentLoaded": 62.5,
+    "firstPaint": 740,
+    "firstContentfulPaint": 740,
+    "largestContentfulPaint": 740,
+    "cumulativeLayoutShift": 0,
+    "totalBlockingTime": 0,
+    "domNodes": 241,
+    "resourceCount": 9,
+    "totalResourceSize": 0,
+    "jsHeapSize": 3368682
+  },
+  "codeAnalysis": {
+    "directory": "x:/dev/khaled-express/customer-web/src",
+    "timestamp": "2026-10-12T14:24:40.692Z",
+    "framework": "next",
+    "totalFiles": 14,
+    "totalLines": 2354,
+    "findings": [
+      {
+        "file": "components\\TrackingSection.tsx",
+        "line": 232,
+        "severity": "high",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (13 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 135,
+        "severity": "high",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (12 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 146,
+        "severity": "high",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (10 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\CustomerDashboard.tsx",
+        "line": 139,
+        "severity": "high",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (11 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\AuthModal.tsx",
+        "line": 106,
+        "severity": "high",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (9 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "app\\page.tsx",
+        "line": 148,
+        "severity": "high",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (12 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\TrackingSection.tsx",
+        "line": 14,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\OfficeInfoCards.tsx",
+        "line": 11,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\OfficeInfoCards.tsx",
+        "line": 117,
+        "severity": "medium",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (8 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 18,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 19,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\LiveShuttleTicker.tsx",
+        "line": 11,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\LiveShuttleTicker.tsx",
+        "line": 28,
+        "severity": "medium",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (7 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\ErrorBoundary.tsx",
+        "line": 50,
+        "severity": "medium",
+        "category": "code-quality",
+        "rule": "deep-nesting",
+        "message": "Deep nesting detected (7 levels)",
+        "suggestion": "Extract nested logic into helper functions or use early returns"
+      },
+      {
+        "file": "components\\CustomerDashboard.tsx",
+        "line": 15,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\AuthModal.tsx",
+        "line": 18,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "app\\page.tsx",
+        "line": 17,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "app\\layout.tsx",
+        "line": 93,
+        "severity": "medium",
+        "category": "ux",
+        "rule": "missing-error-boundary",
+        "message": "React component without error boundary in ancestry",
+        "suggestion": "Wrap major UI sections with an ErrorBoundary component",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\TrackingSection.tsx",
+        "line": 141,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\TrackingSection.tsx",
+        "line": 181,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\TrackingSection.tsx",
+        "line": 209,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 131,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 146,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 300,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 308,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\NewTransferModal.tsx",
+        "line": 361,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 37,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 63,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 76,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 90,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\Navbar.tsx",
+        "line": 123,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\CustomerDashboard.tsx",
+        "line": 169,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\AuthModal.tsx",
+        "line": 172,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "components\\AuthModal.tsx",
+        "line": 184,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "event-handler-inline",
+        "message": "Inline arrow function in event handler causes unnecessary re-renders",
+        "suggestion": "Extract the handler into a useCallback hook or a named function defined outside JSX",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "app\\layout.tsx",
+        "line": 26,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "magic-number",
+        "message": "Magic number in JSX/style (not 0 or 1)",
+        "suggestion": "Extract magic numbers into named constants or design tokens",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "app\\layout.tsx",
+        "line": 27,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "magic-number",
+        "message": "Magic number in JSX/style (not 0 or 1)",
+        "suggestion": "Extract magic numbers into named constants or design tokens",
+        "analysisMethod": "regex"
+      },
+      {
+        "file": "app\\globals.css",
+        "line": 18,
+        "severity": "low",
+        "category": "code-quality",
+        "rule": "magic-number",
+        "message": "Magic number in JSX/style (not 0 or 1)",
+        "suggestion": "Extract magic numbers into named constants or design tokens",
+        "analysisMethod": "regex"
+      }
+    ],
+    "summary": {
+      "components": 10,
+      "stylesheets": 1,
+      "avgFileSize": 168,
+      "largestFiles": [
+        {
+          "file": "components\\TrackingSection.tsx",
+          "lines": 383
+        },
+        {
+          "file": "components\\NewTransferModal.tsx",
+          "lines": 383
+        },
+        {
+          "file": "app\\page.tsx",
+          "lines": 252
+        },
+        {
+          "file": "components\\AuthModal.tsx",
+          "lines": 197
+        },
+        {
+          "file": "components\\Navbar.tsx",
+          "lines": 189
+        }
+      ]
+    },
+    "configStatus": {
+      "loaded": false,
+      "path": null,
+      "rulesDisabled": [],
+      "severityOverrides": []
+    }
+  },
+  "seo": {
+    "url": "http://localhost:3000",
+    "timestamp": "2026-10-12T14:24:41.431Z",
+    "checks": [
+      {
+        "id": "title",
+        "title": "Page Title",
+        "passed": true,
+        "value": "Khaled Express | Transport de Colis Alger ↔ El Eulma",
+        "recommendation": "Page has a title tag.",
+        "impact": "critical"
+      },
+      {
+        "id": "meta-description",
+        "title": "Meta Description",
+        "passed": true,
+        "value": "Service express de transfert et livraison de colis entre Alger et El Eulma (Sétif). Suivi en temps réel et notifications SMS.",
+        "recommendation": "Page has a meta description.",
+        "impact": "critical"
+      },
+      {
+        "id": "h1-tag",
+        "title": "Single H1 Tag",
+        "passed": true,
+        "value": "1 H1 tag(s)",
+        "recommendation": "Page has exactly one H1 tag.",
+        "impact": "critical"
+      },
+      {
+        "id": "heading-hierarchy",
+        "title": "Heading Hierarchy",
+        "passed": true,
+        "value": "10 headings (proper hierarchy)",
+        "recommendation": "Heading hierarchy is properly structured.",
+        "impact": "high"
+      },
+      {
+        "id": "canonical-url",
+        "title": "Canonical URL",
+        "passed": true,
+        "value": "http://localhost:3000",
+        "recommendation": "Page has a canonical URL.",
+        "impact": "high"
+      },
+      {
+        "id": "lang-attribute",
+        "title": "HTML Lang Attribute",
+        "passed": true,
+        "value": "fr",
+        "recommendation": "Language set to \"fr\".",
+        "impact": "high"
+      },
+      {
+        "id": "viewport-meta",
+        "title": "Viewport Meta Tag",
+        "passed": true,
+        "value": "width=device-width, initial-scale=1",
+        "recommendation": "Viewport meta tag is set.",
+        "impact": "high"
+      },
+      {
+        "id": "image-alt-text",
+        "title": "Image Alt Text",
+        "passed": true,
+        "value": "No images found",
+        "recommendation": "No images on page — check passes by default.",
+        "impact": "high"
+      },
+      {
+        "id": "og-title",
+        "title": "Open Graph Title",
+        "passed": true,
+        "value": "Khaled Express | Transport de Colis Alger ↔ El Eulma",
+        "recommendation": "Open Graph title is set.",
+        "impact": "medium"
+      },
+      {
+        "id": "og-description",
+        "title": "Open Graph Description",
+        "passed": true,
+        "value": "Service express de transfert et livraison de colis entre Alger et El Eulma (Sétif). Suivi en temps réel et notifications SMS.",
+        "recommendation": "Open Graph description is set.",
+        "impact": "medium"
+      },
+      {
+        "id": "og-image",
+        "title": "Open Graph Image",
+        "passed": true,
+        "value": "http://localhost:3000/og-image.png",
+        "recommendation": "Open Graph image is set.",
+        "impact": "medium"
+      },
+      {
+        "id": "twitter-card",
+        "title": "Twitter Card Meta",
+        "passed": true,
+        "value": "summary_large_image",
+        "recommendation": "Twitter card type: \"summary_large_image\".",
+        "impact": "medium"
+      },
+      {
+        "id": "structured-data",
+        "title": "Structured Data (JSON-LD)",
+        "passed": true,
+        "value": "1 block(s) found",
+        "recommendation": "Structured data found on page.",
+        "impact": "medium"
+      },
+      {
+        "id": "charset",
+        "title": "Character Encoding",
+        "passed": true,
+        "value": "utf-8",
+        "recommendation": "Charset set to \"utf-8\".",
+        "impact": "low"
+      },
+      {
+        "id": "meta-robots",
+        "title": "Meta Robots",
+        "passed": true,
+        "value": "index, follow",
+        "recommendation": "Robots meta allows indexing.",
+        "impact": "low"
+      },
+      {
+        "id": "link-text",
+        "title": "Link Accessibility",
+        "passed": true,
+        "value": "0/1 links missing descriptive text",
+        "recommendation": "All links have descriptive text.",
+        "impact": "low"
+      },
+      {
+        "id": "title-length",
+        "title": "Title Length",
+        "passed": true,
+        "value": "52 characters",
+        "recommendation": "Title length is optimal (30-60 characters).",
+        "impact": "low"
+      },
+      {
+        "id": "description-length",
+        "title": "Description Length",
+        "passed": true,
+        "value": "125 characters",
+        "recommendation": "Description length is optimal (120-160 characters).",
+        "impact": "low"
+      }
+    ],
+    "passed": 18,
+    "failed": 0,
+    "score": 100,
+    "summary": "All 18 SEO checks passed (score: 100/100)."
+  },
+  "grades": {
+    "accessibility": {
+      "grade": "A+",
+      "score": 100,
+      "label": "Exceptional",
+      "color": "#22c55e"
+    },
+    "performance": {
+      "grade": "A+",
+      "score": 100,
+      "label": "Exceptional",
+      "color": "#22c55e"
+    },
+    "bestPractices": {
+      "grade": "F",
+      "score": 0,
+      "label": "Failing",
+      "color": "#dc2626"
+    },
+    "seo": {
+      "grade": "F",
+      "score": 100,
+      "label": "Failing",
+      "color": "#dc2626"
+    },
+    "codeQuality": {
+      "grade": "F",
+      "score": 48,
+      "label": "Failing",
+      "color": "#dc2626"
+    }
+  },
+  "responsive": [
+    {
+      "width": 375,
+      "height": 812,
+      "url": "http://localhost:3000"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "url": "http://localhost:3000"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "url": "http://localhost:3000"
+    }
+  ]
+}

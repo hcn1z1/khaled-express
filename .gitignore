@@ -1,18 +1,25 @@
 # Python & Virtualenv
+.venv/
 venv/
+env/
 __pycache__/
 *.py[cod]
 *$py.class
 *.sqlite3
+db.sqlite3
 
 # Node & Frontend
 node_modules/
 dist/
 dist-ssr/
+.next/
+out/
+build/
 *.local
 
 # Tauri build
 src-tauri/target/
+target/
 
 # IDE & OS
 .vscode/

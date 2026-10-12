@@ -1,84 +1,100 @@
-version: '3.8'
-
 services:
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     container_name: khaled_express_db
-    restart: unless-stopped
     environment:
       POSTGRES_DB: khaled_express
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: khaled_express_password_2026
+      POSTGRES_USER: khaled
+      POSTGRES_PASSWORD: express_password_2026
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U khaled -d khaled_express"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis:7-alpine
     container_name: khaled_express_redis
-    restart: unless-stopped
     ports:
       - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
-  api:
+  backend:
     build:
-      context: .
-      dockerfile: Dockerfile.backend
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: khaled_express_api
-    restart: unless-stopped
     command: >
       sh -c "python manage.py migrate &&
-             python seed_data.py &&
+             python manage.py seed_data &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
-    environment:
-      - DEBUG=True
-      - DB_ENGINE=postgres
-      - POSTGRES_DB=khaled_express
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=khaled_express_password_2026
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
     ports:
       - "8000:8000"
+    environment:
+      DJANGO_DEBUG: "True"
+      DJANGO_SECRET_KEY: "khaled-express-production-secret-key-super-secure"
+      POSTGRES_DB: khaled_express
+      POSTGRES_USER: khaled
+      POSTGRES_PASSWORD: express_password_2026
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      CELERY_ALWAYS_EAGER: "False"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
   worker:
     build:
-      context: .
-      dockerfile: Dockerfile.backend
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: khaled_express_worker
-    restart: unless-stopped
-    command: >
-      sh -c "python -c 'print(\"Khaled Express Mock Notification Worker Started...\"); import time; time.sleep(86400)'"
+    command: celery -A khaled_express worker -l info
     volumes:
       - ./backend:/app
     environment:
-      - DB_ENGINE=postgres
-      - POSTGRES_DB=khaled_express
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=khaled_express_password_2026
-      - POSTGRES_HOST=db
-      - REDIS_HOST=redis
+      DJANGO_DEBUG: "False"
+      DJANGO_SECRET_KEY: "khaled-express-production-secret-key-super-secure"
+      POSTGRES_DB: khaled_express
+      POSTGRES_USER: khaled
+      POSTGRES_PASSWORD: express_password_2026
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      CELERY_ALWAYS_EAGER: "False"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
     depends_on:
-      - db
-      - redis
+      backend:
+        condition: service_started
+      redis:
+        condition: service_healthy
 
-  frontend:
+  customer-web:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend
-    container_name: khaled_express_frontend
-    restart: unless-stopped
+      context: ./customer-web
+      dockerfile: Dockerfile
+    container_name: khaled_express_customer_web
     ports:
       - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api
     depends_on:
-      - api
+      - backend
 
 volumes:
-  postgres_data:
+  pgdata:

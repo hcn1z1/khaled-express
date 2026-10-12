@@ -1,14 +1,18 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'khaled-express-secret-key-algiers-eleulma-prototype-2026')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-khaled-express-secret-key-super-safe-2026')
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['*']
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -16,9 +20,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Third-party
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
-    'api',
+    
+    # Khaled Express Apps
+    'core',
+    'parcels',
+    'finance',
+    'notifications',
+    'ai_assistant',
 ]
 
 MIDDLEWARE = [
@@ -37,7 +50,7 @@ ROOT_URLCONF = 'khaled_express.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -53,16 +66,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'khaled_express.wsgi.application'
 
 # Database
-# Default to SQLite for easy local dev, configurable to Postgres via env
-DB_ENGINE = os.environ.get('DB_ENGINE', 'sqlite')
-if DB_ENGINE == 'postgres':
+# Uses PostgreSQL if POSTGRES_DB is provided, otherwise SQLite3 for quick local development
+POSTGRES_DB = os.environ.get('POSTGRES_DB')
+if POSTGRES_DB:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('POSTGRES_DB', 'khaled_express'),
+            'NAME': POSTGRES_DB,
             'USER': os.environ.get('POSTGRES_USER', 'postgres'),
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
-            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+            'HOST': os.environ.get('POSTGRES_HOST', 'db'),
             'PORT': os.environ.get('POSTGRES_PORT', '5432'),
         }
     }
@@ -74,11 +87,13 @@ else:
         }
     }
 
-AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'core.User'
 
-AUTH_PASSWORD_VALIDATORS = []
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', 'OPTIONS': {'min_length': 4}},
+]
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'fr-dz'
 TIME_ZONE = 'Africa/Algiers'
 USE_I18N = True
 USE_TZ = True
@@ -86,29 +101,34 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
 }
 
-# CORS settings for frontend & desktop app
+# CORS settings for Next.js web and Tauri desktop app
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https?://localhost:\d+$",
-    r"^https?://127\.0\.0\.1:\d+$",
-]
 
-# Currency & Fixed office config
-CURRENCY = 'DZD'
-DEFAULT_LANGUAGE = 'fr'
-SUPPORTED_LANGUAGES = ['fr', 'ar']
-FIXED_OFFICES = ['ALG', 'EUL']
+# Celery Configuration
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', os.environ.get('REDIS_URL', 'redis://localhost:6379/0'))
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', os.environ.get('REDIS_URL', 'redis://localhost:6379/0'))
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_ALWAYS_EAGER = os.environ.get('CELERY_ALWAYS_EAGER', 'True').lower() in ('true', '1')
+CELERY_TASK_EAGER_PROPAGATES = True
+
+# Gemini AI API Key
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
