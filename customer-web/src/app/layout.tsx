@@ -119,7 +119,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="bg-dark-900 text-slate-100 min-h-screen antialiased">
+      <body className="bg-dark-950 text-slate-100 min-h-screen antialiased">
         <SiteProvider>
           <ErrorBoundary>
             <AppShell>{children}</AppShell>

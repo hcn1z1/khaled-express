@@ -76,8 +76,8 @@ export default function OfficeInfoCards() {
 
             <div className="mt-8 pt-6 border-t border-dark-750 flex items-center justify-between text-xs text-slate-400">
               <span>{office.service}</span>
-              <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4" /> {t.office_guaranteed}
+              <span className="text-brand-400 font-semibold flex items-center gap-1">
+                <ShieldCheck className="w-4 h-4 text-brand-400" /> {t.office_guaranteed}
               </span>
             </div>
           </div>

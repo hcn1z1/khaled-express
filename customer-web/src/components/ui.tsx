@@ -23,7 +23,7 @@ const BUTTON_VARIANTS: Record<ButtonVariant, string> = {
   danger:
     'bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/25',
   success:
-    'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/25',
+    'bg-brand-400 hover:bg-brand-300 text-dark-950 font-bold shadow-lg shadow-brand-500/20',
 };
 
 const BUTTON_SIZES: Record<ButtonSize, string> = {
@@ -140,7 +140,7 @@ export function Badge({
     outline: 'bg-transparent text-slate-300 border-dark-700',
     destructive: 'bg-red-950/50 text-red-400 border-red-800/60',
     brand: 'bg-brand-500/15 text-brand-300 border-brand-500/30',
-    success: 'bg-emerald-950/50 text-emerald-400 border-emerald-800/60',
+    success: 'bg-brand-500/20 text-brand-300 border-brand-500/40',
   };
 
   return (
@@ -326,7 +326,7 @@ export function StatCard({
 }: StatCardProps) {
   const accentGlow = {
     brand: 'border-brand-500/20 hover:border-brand-500/50 from-brand-600/10 to-transparent',
-    emerald: 'border-emerald-500/20 hover:border-emerald-500/50 from-emerald-600/10 to-transparent',
+    emerald: 'border-brand-500/20 hover:border-brand-500/50 from-brand-600/10 to-transparent',
     amber: 'border-amber-500/20 hover:border-amber-500/50 from-amber-600/10 to-transparent',
     blue: 'border-blue-500/20 hover:border-blue-500/50 from-blue-600/10 to-transparent',
     zinc: 'border-dark-700 hover:border-dark-600 from-white/5 to-transparent',
@@ -334,7 +334,7 @@ export function StatCard({
 
   const iconColor = {
     brand: 'text-brand-400 bg-brand-500/15',
-    emerald: 'text-emerald-400 bg-emerald-500/15',
+    emerald: 'text-brand-400 bg-brand-500/15',
     amber: 'text-amber-400 bg-amber-500/15',
     blue: 'text-blue-400 bg-blue-500/15',
     zinc: 'text-slate-300 bg-dark-800',
@@ -380,7 +380,7 @@ export function StatCard({
               <span
                 className={clsx(
                   'font-bold ms-auto',
-                  trendUp ? 'text-emerald-400' : 'text-slate-400',
+                  trendUp ? 'text-brand-400' : 'text-slate-400',
                 )}
               >
                 {trend}

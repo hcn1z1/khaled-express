@@ -206,12 +206,12 @@ export default function InteractiveRouteVisualizer() {
               <span className="relative flex h-3 w-3">
                 <span
                   className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
-                    isArrived ? 'bg-emerald-400' : 'bg-brand-400'
+                    isArrived ? 'bg-brand-300' : 'bg-brand-400'
                   } opacity-75`}
                 />
                 <span
                   className={`relative inline-flex rounded-full h-3 w-3 ${
-                    isArrived ? 'bg-emerald-500' : 'bg-brand-500'
+                    isArrived ? 'bg-brand-400' : 'bg-brand-500'
                   }`}
                 />
               </span>
@@ -221,7 +221,7 @@ export default function InteractiveRouteVisualizer() {
               <span
                 className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${
                   isArrived
-                    ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
+                    ? 'bg-brand-500/20 text-brand-300 border-brand-500/30'
                     : 'bg-brand-500/15 text-brand-300 border-brand-500/30'
                 }`}
               >
@@ -254,7 +254,7 @@ export default function InteractiveRouteVisualizer() {
                 </span>
                 <span className="hidden sm:inline-block text-dark-600">•</span>
                 <span className="hidden sm:flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <ShieldCheck className="w-4 h-4 text-brand-400" />
                   <span>{isAr ? 'مراقبة بالباركود' : 'Suivi Code-barres'}</span>
                 </span>
               </div>
@@ -280,7 +280,7 @@ export default function InteractiveRouteVisualizer() {
                   duration: 4.8,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-600/30 via-brand-500/50 to-emerald-500/50 pointer-events-none"
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-600/30 via-brand-500/50 to-brand-400/50 pointer-events-none"
               />
 
               {/* Animated Vehicle: travels from left (4%) to right (96%), then stops! */}
@@ -300,7 +300,7 @@ export default function InteractiveRouteVisualizer() {
                     <Truck className="w-4 h-4" />
                   </div>
                   {isArrived && (
-                    <span className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] animate-ping" />
+                    <span className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-brand-300 shadow-[0_0_8px_#d4b87c] animate-ping" />
                   )}
                 </div>
               </motion.div>
@@ -333,7 +333,7 @@ export default function InteractiveRouteVisualizer() {
                           isFirst
                             ? 'bg-brand-500/20 text-brand-300 border border-brand-500/30'
                             : isLast
-                            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                            ? 'bg-brand-500/20 text-brand-300 border border-brand-500/30'
                             : 'bg-dark-800 text-slate-400'
                         }`}
                       >

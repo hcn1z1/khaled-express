@@ -19,10 +19,10 @@ export default function LiveShuttleTicker() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
         {/* Highway live indicator */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-bold text-[11px] shrink-0">
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-brand-300 font-bold text-[11px] shrink-0">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500" />
             </span>
             <span>{t.ticker_active}</span>
           </div>
@@ -48,16 +48,16 @@ export default function LiveShuttleTicker() {
 
           <motion.div
             whileHover={{ scale: 1.04, y: -1 }}
-            className="flex items-center gap-2 px-3 py-1 rounded-xl bg-dark-900 border border-dark-800 hover:border-emerald-500/40 text-slate-200 shrink-0 font-mono text-[11px] transition-colors cursor-default"
+            className="flex items-center gap-2 px-3 py-1 rounded-xl bg-dark-900 border border-dark-800 hover:border-brand-500/40 text-slate-200 shrink-0 font-mono text-[11px] transition-colors cursor-default"
           >
             <motion.div
               animate={{ x: [0, -2, 0] }}
               transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
             >
-              <Truck className="w-3.5 h-3.5 text-emerald-400" />
+              <Truck className="w-3.5 h-3.5 text-brand-400" />
             </motion.div>
             <span>
-              El Eulma ➔ Alger : <strong className="text-emerald-300">{t.ticker_in_transit}</strong>
+              El Eulma ➔ Alger : <strong className="text-brand-300">{t.ticker_in_transit}</strong>
             </span>
           </motion.div>
 

@@ -45,17 +45,17 @@ export default function BrandLogo({
 
   const emblem = (
     <div
-      className={`relative flex items-center justify-center shrink-0 bg-gradient-to-tr from-brand-900 via-brand-600 to-brand-500 text-white shadow-glow-brand ring-1 ring-white/20 transition-all duration-300 group-hover:scale-105 group-hover:rotate-1 ${emblemSizes[size]}`}
+      className={`relative flex items-center justify-center shrink-0 bg-gradient-to-tr from-brand-600 via-brand-500 to-brand-300 text-dark-950 shadow-glow-brand ring-1 ring-brand-300/50 transition-all duration-300 group-hover:scale-105 group-hover:rotate-1 ${emblemSizes[size]}`}
     >
       {/* Dynamic ambient highlight */}
-      <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
 
       {/* Aerodynamic Speed Logistics SVG Vector from better-icons (mdi:truck-fast / Iconify) */}
       <svg
         viewBox="0 0 24 24"
         width={svgSizes[size].width}
         height={svgSizes[size].height}
-        className="relative z-10 drop-shadow-md text-white transition-transform group-hover:translate-x-0.5"
+        className="relative z-10 drop-shadow-sm text-dark-950 transition-transform group-hover:translate-x-0.5"
         fill="currentColor"
         aria-hidden="true"
       >
@@ -82,21 +82,28 @@ export default function BrandLogo({
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
       {emblem}
       <div className="flex flex-col text-start">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <span className={`font-black tracking-tight text-white ${titleSizes[size]}`}>
-            KHALED <span className="text-brand-500">EXPRESS</span>
+            KHALED <span className="text-brand-400">EXPRESS</span>
           </span>
           {variant === 'full' && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-500/15 text-brand-300 border border-brand-500/30 uppercase tracking-wider hidden lg:inline">
-              Alger ↔ El Eulma
-            </span>
+            <div className="hidden xl:flex flex-col text-start ps-2.5 border-s border-dark-750">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-300 border border-brand-500/25 tracking-wide">
+                ALGER ↔ EL EULMA
+              </span>
+              <span className="text-[9px] text-slate-400 font-medium mt-0.5">
+                Transport de colis & marchandises
+              </span>
+            </div>
           )}
         </div>
         {showSubtitle && (
-          <div className="flex items-center gap-2 text-[11px] text-slate-400 font-semibold tracking-normal leading-tight">
-            <span className="font-tajawal text-slate-300">خالد إكسبريس</span>
-            <span className="text-slate-600">•</span>
-            <span>Messagerie & Transport Express</span>
+          <div className="flex items-center gap-1.5 text-[11px] text-slate-400 font-semibold tracking-normal leading-tight mt-0.5">
+            <span>Colis</span>
+            <span className="text-brand-400">•</span>
+            <span>Rapide</span>
+            <span className="text-brand-400">•</span>
+            <span>Sécurisé</span>
           </div>
         )}
       </div>

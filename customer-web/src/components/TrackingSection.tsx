@@ -107,14 +107,14 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="bg-dark-850/80 backdrop-blur p-3 sm:p-5 rounded-3xl border border-dark-750 shadow-card hover:border-dark-700 focus-within:border-brand-500/50 focus-within:shadow-glow-brand/20 transition-all duration-300"
+        className="rounded-3xl bg-dark-900/95 border border-dark-750 p-2 sm:p-2.5 shadow-2xl focus-within:border-brand-400/60 focus-within:shadow-glow-brand/25 transition-all duration-300"
       >
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSearch();
           }}
-          className="flex flex-col sm:flex-row items-center gap-3"
+          className="flex flex-col sm:flex-row items-center gap-2"
         >
           <div className="relative flex-1 w-full">
             <Search className="w-5 h-5 absolute start-4 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -126,9 +126,9 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
               type="text"
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
-              placeholder={t.track_input_placeholder}
+              placeholder={isAr ? 'أدخل رمز التتبع (مثال : KX-ALG-EUL-261012-4821)' : 'Entrez votre code de suivi (ex : KX-ALG-EUL-261012-4821)'}
               aria-label={t.track_input_placeholder}
-              className="w-full bg-dark-900 border border-dark-700 rounded-2xl ps-12 pe-4 py-4 text-white placeholder-slate-500 font-mono text-sm tracking-wide focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+              className="w-full bg-transparent border-0 rounded-2xl ps-12 pe-4 py-3.5 text-white placeholder-slate-500 text-xs sm:text-sm tracking-wide focus:outline-none focus:ring-0"
             />
           </div>
           <motion.button
@@ -137,25 +137,32 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
             whileTap={{ scale: 0.98 }}
             disabled={loading || !code.trim()}
             aria-label={t.track_button}
-            className="w-full sm:w-auto px-9 py-4 bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white font-bold rounded-2xl shadow-glow-brand transition-all active:scale-95 whitespace-nowrap text-sm flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="w-full sm:w-auto px-7 py-3.5 bg-brand-400 hover:bg-brand-300 disabled:opacity-50 text-dark-950 font-black rounded-2xl shadow-card transition-all active:scale-95 whitespace-nowrap text-xs sm:text-sm flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-dark-950/30 border-t-dark-950 rounded-full animate-spin" />
                 {t.track_searching}
               </span>
             ) : (
               <>
-                <Search className="w-4 h-4" />
-                <span>{t.track_button}</span>
+                <Package className="w-4 h-4 text-dark-950" />
+                <span>{isAr ? 'تتبع طردي' : 'Suivre mon colis'}</span>
+                <span className="text-dark-950 font-bold">→</span>
               </>
             )}
           </motion.button>
         </form>
 
+        {/* Live Tracking Reassurance Pill - NO GREEN */}
+        <div className="flex items-center gap-2 text-xs text-brand-300/90 font-medium pt-2.5 ps-3 border-t border-dark-800/60 mt-2">
+          <CheckCircle2 className="w-3.5 h-3.5 text-brand-400 shrink-0" />
+          <span>{isAr ? 'تتبع فوري ومباشر لطردكم' : 'Suivi en temps réel de votre colis'}</span>
+        </div>
+
         {/* Recent + dev quick codes */}
         {(recent.length > 0 || process.env.NODE_ENV === 'development') && (
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-400 pt-2 border-t border-dark-800">
+          <div className="mt-2.5 flex flex-wrap items-center gap-2 text-xs text-slate-400 pt-2 border-t border-dark-800/60">
             <span className="text-[11px] font-semibold inline-flex items-center gap-1.5">
               <History className="w-3.5 h-3.5" />
               {t.track_recent} :
@@ -249,7 +256,7 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
                   title={t.copy_code}
                   className="p-1.5 rounded-lg bg-dark-700 hover:bg-dark-600 text-slate-300 transition-colors"
                 >
-                  {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4 text-brand-400" /> : <Copy className="w-4 h-4" />}
                 </motion.button>
               </div>
               <p className="text-xs text-slate-300 mt-1">
@@ -284,7 +291,7 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.max(0, (currentStep / (steps.length - 1)) * 100)}%` }}
                   transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
-                  className="h-full bg-gradient-to-r from-brand-600 to-emerald-500 rounded-full"
+                  className="h-full bg-gradient-to-r from-brand-600 to-brand-400 rounded-full"
                 />
               </div>
 
@@ -307,9 +314,9 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
                         transition={isCurrent ? { repeat: Infinity, duration: 2, ease: 'easeInOut' } : {}}
                         className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all ${
                           isCurrent
-                            ? 'bg-brand-600 text-white shadow-glow-brand ring-4 ring-brand-600/25 scale-110'
+                            ? 'bg-brand-500 text-dark-950 font-black shadow-glow-brand ring-4 ring-brand-500/25 scale-110'
                             : isPassed
-                            ? 'bg-emerald-600 text-white shadow-md'
+                            ? 'bg-brand-600/30 text-brand-300 border border-brand-500/40 shadow-md'
                             : 'bg-dark-800 text-slate-400 border border-dark-700'
                         }`}
                       >
@@ -349,7 +356,7 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
                 </div>
 
                 <div className="border-t border-dark-750 pt-3 flex items-start gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-brand-400 mt-1.5 shrink-0" />
                   <div>
                     <span className="text-xs text-slate-400 block">{t.destination_label}</span>
                     <span className="font-semibold text-white text-sm">
@@ -388,8 +395,8 @@ export default function TrackingSection({ initialCode = '' }: { initialCode?: st
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-300">{t.paid_status}</span>
                   <span
-                    className={`text-xs font-bold px-2.5 py-0.5 rounded ${
-                      parcel.payment_status === 'PAID' ? 'bg-emerald-500/15 text-emerald-400' : 'bg-amber-500/15 text-amber-400'
+                    className={`text-xs font-bold px-2.5 py-0.5 rounded border ${
+                      parcel.payment_status === 'PAID' ? 'bg-brand-500/15 text-brand-300 border-brand-500/30' : 'bg-dark-800 text-slate-400 border-dark-700'
                     }`}
                   >
                     {parcel.payment_status === 'PAID' ? t.paid : t.unpaid}

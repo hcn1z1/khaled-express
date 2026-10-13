@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   Zap,
@@ -12,13 +13,13 @@ import {
   Phone,
   Clock,
   Sparkles,
-  CheckCircle2,
   ChevronRight,
   Package,
+  Headphones,
+  CheckCircle2,
 } from 'lucide-react';
 import TrackingSection from '@/components/TrackingSection';
 import InteractiveRouteVisualizer from '@/components/InteractiveRouteVisualizer';
-import RateCalculator from '@/components/RateCalculator';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { translations } from '@/lib/i18n';
 import { useSite } from '@/lib/site-context';
@@ -28,6 +29,29 @@ export default function LandingContent() {
   const { lang, openTransfer } = useSite();
   const t = translations[lang];
   const isAr = lang === 'ar';
+
+  const trustPillars = [
+    {
+      icon: ShieldCheck,
+      title: isAr ? 'طرود مؤمنة' : 'Colis sécurisés',
+      desc: isAr ? 'كل شحنة مؤمنة ومتبعة بدقة' : 'Chaque envoi est assuré et suivi',
+    },
+    {
+      icon: Clock,
+      title: isAr ? 'مواعيد مضبوطة' : 'Délais respectés',
+      desc: isAr ? 'رحلات يومية منتظمة وموثوقة' : 'Des départs réguliers et fiables',
+    },
+    {
+      icon: Headphones,
+      title: isAr ? 'خدمة زبائن متجاوبة' : 'Service client réactif',
+      desc: isAr ? 'في خدمتكم 7 أيام / 7' : 'À votre écoute 7j/7',
+    },
+    {
+      icon: Package,
+      title: isAr ? 'جميع أنواع الطرود' : 'Tous types de colis',
+      desc: isAr ? 'وثائق، بضائع، منصات تجارية...' : 'Documents, marchandises, palettes...',
+    },
+  ];
 
   const features = [
     {
@@ -46,7 +70,7 @@ export default function LandingContent() {
       icon: Bell,
       title: t.feat_sms_title,
       desc: t.feat_sms_desc,
-      accent: 'from-emerald-500/20 to-emerald-500/5 text-emerald-400 border-emerald-500/30',
+      accent: 'from-brand-500/20 to-brand-500/5 text-brand-400 border-brand-500/30',
     },
   ];
 
@@ -55,13 +79,6 @@ export default function LandingContent() {
     { title: t.how_step2_title, desc: t.how_step2_desc, icon: ShieldCheck },
     { title: t.how_step3_title, desc: t.how_step3_desc, icon: Truck },
     { title: t.how_step4_title, desc: t.how_step4_desc, icon: Bell },
-  ];
-
-  const stats = [
-    { value: '300 km', label: t.hero_stat_distance },
-    { value: '7j/7', label: t.hero_stat_frequency },
-    { value: 'SMS', label: t.hero_stat_sms },
-    { value: 'DZD', label: t.hero_stat_pricing },
   ];
 
   const offices = [
@@ -93,171 +110,232 @@ export default function LandingContent() {
 
   return (
     <>
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Ambient floating gradient mesh */}
+      {/* Hero Section: Two-Column Split Layout */}
+      <section aria-label="Hero" className="relative overflow-hidden pt-8 pb-14 lg:pt-12 lg:pb-20">
+        {/* Ambient Warm Sunset Backlight */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <motion.div
-            animate={{
-              y: [0, -25, 0],
-              scale: [1, 1.08, 1],
-              opacity: [0.15, 0.22, 0.15],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-600/20 rounded-full blur-[130px]"
-          />
-          <motion.div
-            animate={{
-              x: [0, 20, 0],
-              y: [0, 15, 0],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute top-40 -start-40 w-96 h-96 bg-brand-800/20 rounded-full blur-[110px]"
-          />
-          <motion.div
-            animate={{
-              x: [0, -20, 0],
-              y: [0, -15, 0],
-            }}
-            transition={{
-              duration: 9,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="absolute top-20 -end-40 w-96 h-96 bg-brand-500/15 rounded-full blur-[110px]"
-          />
-
-          {/* Animated Route arc SVG with flowing line and traveling pulse */}
-          <svg
-            className="absolute top-10 left-1/2 -translate-x-1/2 w-[1100px] max-w-none opacity-[0.28]"
-            viewBox="0 0 1100 220"
-            fill="none"
-            aria-hidden="true"
-          >
-            {/* Pulsing route line */}
-            <path
-              d="M60 190 Q 550 -80 1040 190"
-              stroke="url(#routeGrad)"
-              strokeWidth="2.5"
-              className="route-flow-line"
-              strokeLinecap="round"
-            />
-            <defs>
-              <linearGradient id="routeGrad" x1="60" y1="190" x2="1040" y2="190" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#dc2626" />
-                <stop offset="0.5" stopColor="#f87171" />
-                <stop offset="1" stopColor="#10b981" />
-              </linearGradient>
-            </defs>
-
-            {/* Traveling shuttle light particle */}
-            <circle r="5" fill="#ef4444">
-              <animateMotion
-                path="M60 190 Q 550 -80 1040 190"
-                dur="5.5s"
-                repeatCount="indefinite"
-              />
-            </circle>
-            <circle r="12" fill="#ef4444" opacity="0.35">
-              <animateMotion
-                path="M60 190 Q 550 -80 1040 190"
-                dur="5.5s"
-                repeatCount="indefinite"
-              />
-            </circle>
-
-            {/* Origin Node: Alger */}
-            <circle cx="60" cy="190" r="6" fill="#dc2626" />
-            <circle cx="60" cy="190" r="14" fill="#dc2626" opacity="0.25" className="animate-ping" />
-
-            {/* Destination Node: El Eulma */}
-            <circle cx="1040" cy="190" r="6" fill="#10b981" />
-            <circle cx="1040" cy="190" r="14" fill="#10b981" opacity="0.25" className="animate-ping" />
-          </svg>
+          {/* Golden radial ambient behind right van column */}
+          <div className="absolute top-1/4 end-0 w-[620px] h-[520px] bg-gradient-to-br from-brand-500/18 via-brand-600/10 to-transparent rounded-full blur-[140px]" />
+          {/* Subtle top-left brand aura */}
+          <div className="absolute -top-24 -start-24 w-[480px] h-[480px] bg-brand-600/10 rounded-full blur-[130px]" />
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-20 pb-16 sm:pt-28 sm:pb-24">
-          {/* Eyebrow Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dark-850/90 backdrop-blur border border-dark-700 text-brand-300 text-xs font-bold mb-7 shadow-card cursor-default"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500" />
-            </span>
-            <span>{t.hero_eyebrow}</span>
-          </motion.div>
-
-          {/* Hero Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] max-w-4xl mx-auto text-white"
-          >
-            {isAr ? (
-              <>
-                طرودكم بين <span className="text-gradient-shimmer">الجزائر والعلمة</span> بأمان وسرعة فائقة
-              </>
-            ) : (
-              <>
-                Vos colis entre <span className="text-gradient-shimmer">Alger & El Eulma</span> en toute sérénité
-              </>
-            )}
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            className="mt-5 sm:mt-7 text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed"
-          >
-            {t.hero_subtitle}
-          </motion.p>
-
-          {/* Trust stats strip */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-            className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs"
-          >
-            {stats.map((stat, i) => (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            {/* Left Column: Headlines, Metrics & Quick Tracking Input */}
+            <div className="lg:col-span-7 xl:col-span-7 text-start">
+              {/* Eyebrow with gold van icon and horizontal rule */}
               <motion.div
-                key={stat.value}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
-                whileHover={{ y: -4, scale: 1.05 }}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-dark-850/80 backdrop-blur border border-dark-750 hover:border-brand-500/40 hover:shadow-glow-brand/20 transition-all cursor-default"
+                initial={{ opacity: 0, y: -15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-3 mb-5 text-brand-400"
               >
-                <span className="font-black text-brand-400">{stat.value}</span>
-                <span className="text-slate-300 font-medium">{stat.label}</span>
+                <div className="flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-brand-400 shrink-0" />
+                  <span className="text-xs sm:text-sm font-semibold tracking-wide italic">
+                    {isAr ? 'طردكم، أولويتنا القصوى' : 'Votre colis, notre priorité'}
+                  </span>
+                </div>
+                <div className="h-px w-16 bg-gradient-to-r from-brand-400/80 to-transparent" />
               </motion.div>
-            ))}
-          </motion.div>
 
-          {/* Quick Tracking Box */}
-          <div className="mt-12 text-start">
-            <ErrorBoundary fallbackTitle="Erreur dans le suivi de colis">
-              <TrackingSection />
-            </ErrorBoundary>
+              {/* Main Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.08 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black tracking-tight leading-[1.1] text-white max-w-2xl"
+              >
+                {isAr ? (
+                  <>
+                    طرودكم بين{' '}
+                    <span className="text-brand-400 font-extrabold whitespace-nowrap">الجزائر والعلمة</span>
+                    <br />
+                    بأمان وسرعة فائقة
+                  </>
+                ) : (
+                  <>
+                    Vos colis entre{' '}
+                    <span className="text-brand-400 font-extrabold whitespace-nowrap">Alger & El Eulma</span>
+                    <br />
+                    en toute sérénité
+                  </>
+                )}
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.16 }}
+                className="mt-4 sm:mt-5 text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed"
+              >
+                {isAr
+                  ? 'خدمة يومية منتظمة، تتبع مشفر بالباركود، إشعارات SMS مجانية عند الوصول واستلام فوري وآمن.'
+                  : "Service régulier, traçabilité par code-barres Code 128, notifications SMS gratuites à l'arrivée et remise sécurisée."}
+              </motion.p>
+
+              {/* Seamlessly Integrated Tracking Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.32 }}
+                className="mt-7 sm:mt-9"
+              >
+                <ErrorBoundary fallbackTitle="Erreur dans le suivi de colis">
+                  <TrackingSection />
+                </ErrorBoundary>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Route Arc & Mercedes-Benz Sprinter Stock Photo */}
+            <div className="lg:col-span-5 xl:col-span-5 relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative flex flex-col items-center"
+              >
+                {/* Highway Arc SVG connecting Alger to El Eulma with animated gold van */}
+                <div className="w-full max-w-md mx-auto mb-3 relative px-2" aria-hidden="true">
+                  <svg
+                    className="w-full h-20 overflow-visible"
+                    viewBox="0 0 360 70"
+                    fill="none"
+                  >
+                    {/* Node labels inside SVG for pixel-perfect alignment */}
+                    <text x="35" y="20" fill="#dec693" fontSize="13" fontWeight="bold" textAnchor="middle">
+                      Alger
+                    </text>
+                    <text x="325" y="20" fill="#dec693" fontSize="13" fontWeight="bold" textAnchor="middle">
+                      El Eulma
+                    </text>
+
+                    {/* Background dashed route curve */}
+                    <path
+                      d="M 35 52 Q 180 12 325 52"
+                      stroke="rgba(212, 184, 124, 0.25)"
+                      strokeWidth="2"
+                      strokeDasharray="4 4"
+                      fill="none"
+                    />
+
+                    {/* Glowing champagne animated route arc */}
+                    <path
+                      d="M 35 52 Q 180 12 325 52"
+                      stroke="#d4b87c"
+                      strokeWidth="2.5"
+                      strokeDasharray="8 6"
+                      strokeLinecap="round"
+                      fill="none"
+                      className="route-flow-line"
+                    />
+
+                    {/* Moving Gold Delivery Van */}
+                    <g>
+                      <animateMotion
+                        path="M 35 52 Q 180 12 325 52"
+                        dur="4.5s"
+                        repeatCount="indefinite"
+                        rotate="auto"
+                      />
+                      {/* Ambient vehicle glow */}
+                      <circle r="12" fill="#d4b87c" opacity="0.35" />
+                      {/* Van mini container */}
+                      <rect x="-9" y="-6" width="18" height="12" rx="2.5" fill="#d4b87c" />
+                      <circle cx="5" cy="6" r="2.2" fill="#090a0d" />
+                      <circle cx="-5" cy="6" r="2.2" fill="#090a0d" />
+                    </g>
+
+                    {/* Origin & Destination Nodes with Pins */}
+                    <circle cx="35" cy="52" r="5" fill="#d4b87c" />
+                    <circle cx="35" cy="52" r="11" fill="#d4b87c" opacity="0.3" className="animate-ping" />
+
+                    <circle cx="325" cy="52" r="5" fill="#d4b87c" />
+                    <circle cx="325" cy="52" r="11" fill="#d4b87c" opacity="0.3" className="animate-ping" />
+                  </svg>
+                </div>
+
+                {/* Real Stock Van Photo (from free-stock-images-mcp) */}
+                <div className="relative w-full rounded-3xl overflow-hidden border border-brand-500/30 bg-dark-900 shadow-[0_25px_70px_rgba(0,0,0,0.9)] group">
+                  {/* Champagne ambient backlight glow */}
+                  <div className="absolute -inset-2 bg-gradient-to-tr from-brand-500/25 via-brand-400/15 to-transparent rounded-[2.5rem] blur-2xl -z-10 pointer-events-none" />
+
+                  {/* Stock Image */}
+                  <div className="relative w-full aspect-[4/3] sm:aspect-[16/11]">
+                    <Image
+                      src="/hero-van-stock.jpg"
+                      alt="Fourgon express Mercedes-Benz Sprinter en transit Alger - El Eulma"
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, 550px"
+                      className="object-cover object-center group-hover:scale-102 transition-transform duration-700"
+                    />
+
+                    {/* Multi-layer dark vignettes to fade daytime background into caviar black */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/45 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-dark-950/50 via-transparent to-dark-950/70 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-950/60 via-transparent to-dark-950/40 pointer-events-none" />
+
+                    {/* Khaled Express vehicle emblem badge overlay */}
+                    <div className="absolute bottom-4 start-4 sm:bottom-5 sm:start-5 flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-dark-950/90 backdrop-blur-md border border-brand-500/35 text-white shadow-xl">
+                      <Truck className="w-4 h-4 text-brand-400 shrink-0" />
+                      <div className="text-start leading-none">
+                        <span className="block font-black text-xs text-white tracking-wide">
+                          KHALED <span className="text-brand-400">EXPRESS</span>
+                        </span>
+                        <span className="text-[9px] text-slate-300 font-mono tracking-wider">
+                          ALGER ↔ EL EULMA
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
+
+          {/* Trust Pillars Strip (4 pillars with dark circular gold icons) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-14 sm:mt-18 pt-8 border-t border-dark-800/80"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {trustPillars.map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={pillar.title}
+                    className="flex items-center gap-3.5 group cursor-default"
+                  >
+                    <div className="w-12 h-12 rounded-full border border-brand-500/35 bg-dark-900/90 flex items-center justify-center text-brand-400 shrink-0 group-hover:border-brand-400 group-hover:bg-dark-850 group-hover:shadow-glow-brand/20 transition-all">
+                      <Icon className="w-5 h-5 text-brand-400" />
+                    </div>
+                    <div>
+                      <h2 className="text-sm font-bold text-white group-hover:text-brand-300 transition-colors">
+                        {pillar.title}
+                      </h2>
+                      <p className="text-xs text-slate-400 mt-0.5 leading-snug">
+                        {pillar.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Slogan Divider */}
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-10 text-[11px] sm:text-xs font-bold tracking-[0.25em] text-brand-400/90 uppercase text-center">
+              <span>KHALED EXPRESS</span>
+              <span className="text-brand-500/40">—</span>
+              <span>PLUS PROCHE DE VOUS</span>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* Interactive Highway Route Corridor Showcase */}
       <ErrorBoundary fallbackTitle="Erreur dans le visualiseur de parcours">
@@ -273,7 +351,7 @@ export default function LandingContent() {
             viewport={{ once: true }}
             className="text-center mb-10 sm:mb-14"
           >
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-500">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-400">
               {t.features_eyebrow}
             </span>
             <h2 id="features-heading" className="text-2xl sm:text-3xl font-black text-white mt-2 tracking-tight">
@@ -289,13 +367,13 @@ export default function LandingContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -6 }}
               >
                 <Card
                   className="group p-6 sm:p-7 hover:border-brand-500/50 hover:bg-dark-850/95 duration-300 hover:shadow-glow-brand flex items-start gap-4 h-full relative overflow-hidden"
                 >
                   <div
-                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${feat.accent} flex items-center justify-center shrink-0 ring-1 ring-white/10 group-hover:scale-115 group-hover:rotate-6 transition-all duration-300 shadow-md`}
+                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${feat.accent} flex items-center justify-center shrink-0 ring-1 ring-white/10 group-hover:scale-110 transition-all duration-300 shadow-md`}
                   >
                     <feat.icon className="w-6 h-6" />
                   </div>
@@ -321,7 +399,7 @@ export default function LandingContent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-500">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-400">
               {t.how_eyebrow}
             </span>
             <h2 id="how-heading" className="text-2xl sm:text-3xl font-black text-white mt-2 tracking-tight">
@@ -336,7 +414,7 @@ export default function LandingContent() {
               aria-hidden="true"
             >
               {/* Static gradient track connecting the steps */}
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-600/40 via-dark-700 to-emerald-500/40" />
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-600/40 via-dark-700 to-brand-500/40" />
 
               {/* Moving light beam that travels completely from Step 1 through Step 4 */}
               <motion.div
@@ -347,55 +425,42 @@ export default function LandingContent() {
                   duration: 3.2,
                   ease: 'easeInOut',
                 }}
-                className="absolute inset-y-0 w-36 -translate-x-1/2 bg-gradient-to-r from-transparent via-brand-400 to-emerald-400 shadow-glow-brand"
+                className="absolute inset-y-0 w-36 -translate-x-1/2 bg-gradient-to-r from-transparent via-brand-400 to-brand-300 shadow-glow-brand"
               >
                 {/* Glowing spark on the leading edge reaching Step 4 */}
-                <span className="absolute end-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-emerald-300 shadow-[0_0_12px_#10b981]" />
+                <span className="absolute end-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-300 shadow-[0_0_12px_#d4b87c]" />
               </motion.div>
             </div>
 
-            {steps.map((step, i) => {
-              const StepIcon = step.icon;
-              const isLastStep = i === 3;
-              return (
-                <motion.li
-                  key={step.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
-                  className="relative group"
-                >
-                  <div className="flex lg:flex-col items-start lg:items-center text-start lg:text-center gap-4">
-                    <motion.div
-                      whileHover={{ scale: 1.15, rotate: 6 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                      className={`w-14 h-14 rounded-2xl bg-dark-850 border-2 flex items-center justify-center text-center leading-none text-xl font-black shrink-0 relative z-10 transition-all select-none ${
-                        isLastStep
-                          ? 'border-emerald-500/80 text-emerald-400 shadow-[0_0_25px_rgba(16,185,129,0.35)] group-hover:border-emerald-400 group-hover:bg-dark-800'
-                          : 'border-brand-600/70 text-brand-400 shadow-glow-brand group-hover:border-brand-500 group-hover:bg-dark-800'
-                      }`}
-                    >
-                      <span>{i + 1}</span>
-                    </motion.div>
-                    <div>
-                      <h3 className="text-sm font-bold text-white group-hover:text-brand-300 transition-colors">
-                        {step.title}
-                      </h3>
-                      <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{step.desc}</p>
-                    </div>
+            {steps.map((step, i) => (
+              <motion.li
+                key={step.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="relative group"
+              >
+                <div className="flex lg:flex-col items-start lg:items-center text-start lg:text-center gap-4">
+                  <motion.div
+                    whileHover={{ scale: 1.15, rotate: 4 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                    className="w-14 h-14 rounded-2xl bg-dark-850 border-2 border-brand-500/70 text-brand-400 shadow-glow-brand group-hover:border-brand-400 group-hover:bg-dark-800 flex items-center justify-center text-center leading-none text-xl font-black shrink-0 relative z-10 transition-all select-none"
+                  >
+                    <span>{i + 1}</span>
+                  </motion.div>
+                  <div>
+                    <h3 className="text-sm font-bold text-white group-hover:text-brand-300 transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{step.desc}</p>
                   </div>
-                </motion.li>
-              );
-            })}
+                </div>
+              </motion.li>
+            ))}
           </ol>
         </div>
       </section>
-
-      {/* Interactive Rate Estimator */}
-      <ErrorBoundary fallbackTitle="Erreur dans le simulateur de prix">
-        <RateCalculator />
-      </ErrorBoundary>
 
       {/* Agencies Showcase Section */}
       <section aria-labelledby="agencies-preview-heading" className="py-14 sm:py-20 relative">
@@ -406,7 +471,7 @@ export default function LandingContent() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-500">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-400">
               {t.nav_rates}
             </span>
             <h2 id="agencies-preview-heading" className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-2">
@@ -424,9 +489,9 @@ export default function LandingContent() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
                 whileHover={{ y: -6 }}
-                className="bg-dark-850/80 p-6 sm:p-8 rounded-3xl border border-dark-750 relative overflow-hidden group hover:border-brand-600/50 hover:shadow-glow-brand/20 transition-all"
+                className="bg-dark-850/80 p-6 sm:p-8 rounded-3xl border border-dark-750 relative overflow-hidden group hover:border-brand-500/50 hover:shadow-glow-brand/20 transition-all"
               >
-                <div className="absolute top-0 end-0 w-32 h-32 bg-brand-600/10 rounded-full blur-2xl group-hover:bg-brand-600/25 transition-all" />
+                <div className="absolute top-0 end-0 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl group-hover:bg-brand-500/20 transition-all" />
 
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-bold px-3 py-1 rounded-full bg-brand-500/15 text-brand-300 border border-brand-500/30 uppercase">
@@ -439,11 +504,11 @@ export default function LandingContent() {
 
                 <div className="space-y-3 mt-6 text-sm text-slate-300">
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-brand-500 shrink-0 mt-0.5" />
+                    <MapPin className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
                     <span>{office.addr}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Phone className="w-5 h-5 text-brand-500 shrink-0" />
+                    <Phone className="w-5 h-5 text-brand-400 shrink-0" />
                     <a
                       href={`tel:${office.phone.replace(/\s+/g, '')}`}
                       className="font-mono font-semibold text-white hover:text-brand-400 transition-colors"
@@ -453,15 +518,15 @@ export default function LandingContent() {
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-brand-500 shrink-0" />
+                    <Clock className="w-5 h-5 text-brand-400 shrink-0" />
                     <span className="text-xs text-slate-300">{t.office_hours}</span>
                   </div>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-dark-750 flex items-center justify-between text-xs text-slate-400">
                   <span>{office.service}</span>
-                  <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4" /> {t.office_guaranteed}
+                  <span className="text-brand-400 font-semibold flex items-center gap-1">
+                    <ShieldCheck className="w-4 h-4 text-brand-400" /> {t.office_guaranteed}
                   </span>
                 </div>
               </motion.div>
@@ -470,17 +535,17 @@ export default function LandingContent() {
         </div>
       </section>
 
-      {/* High-Converting Animated Bottom CTA Banner */}
+      {/* Animated Bottom CTA Banner */}
       <section className="pb-16 sm:pb-24 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-brand-950/60 via-dark-850 to-dark-850 border border-brand-800/40 relative overflow-hidden text-center sm:text-start flex flex-col sm:flex-row items-center justify-between gap-8 shadow-card"
+            className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-brand-950/50 via-dark-850 to-dark-850 border border-brand-500/30 relative overflow-hidden text-center sm:text-start flex flex-col sm:flex-row items-center justify-between gap-8 shadow-card"
           >
-            <div className="absolute -top-24 -start-24 w-64 h-64 bg-brand-600/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-24 -start-24 w-64 h-64 bg-brand-500/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-xl">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold border border-brand-500/30 mb-3">
@@ -502,24 +567,24 @@ export default function LandingContent() {
             <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
               <motion.button
                 type="button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={openTransfer}
-                className="w-full sm:w-auto px-7 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-2xl font-bold text-sm shadow-glow-brand flex items-center justify-center gap-2 active:scale-95 transition-all"
+                className="w-full sm:w-auto px-7 py-4 bg-brand-400 hover:bg-brand-300 text-dark-950 rounded-2xl font-black text-sm shadow-card flex items-center justify-center gap-2 active:scale-95 transition-all"
               >
-                <Package className="w-4 h-4" />
+                <Package className="w-4 h-4 text-dark-950" />
                 <span>{isAr ? 'إنشاء طلب إرسال' : 'Créer un envoi en ligne'}</span>
               </motion.button>
 
               <motion.button
                 type="button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={scrollToTracking}
                 className="w-full sm:w-auto px-6 py-4 bg-dark-800 hover:bg-dark-750 text-slate-200 border border-dark-700 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-all"
               >
                 <span>{isAr ? 'تتبع طرد حالي' : 'Suivre un colis existant'}</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 text-brand-400" />
               </motion.button>
             </div>
           </motion.div>

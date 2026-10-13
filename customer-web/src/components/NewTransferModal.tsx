@@ -160,7 +160,7 @@ export default function NewTransferModal() {
               </div>
 
               <div className="p-4 rounded-2xl bg-dark-850 border border-dark-750 space-y-3">
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">{t.recipient}</span>
+                <span className="text-xs font-bold text-brand-400 uppercase tracking-wider block">{t.recipient}</span>
                 <Field
                   id="transfer-recipient-name"
                   label={t.recipient_name}
@@ -246,7 +246,7 @@ export default function NewTransferModal() {
       ) : (
         /* Success screen with printable receipt */
         <div className="text-center py-2">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center mx-auto mb-4 border border-brand-500/40">
             <CheckCircle className="w-10 h-10" />
           </div>
 
@@ -258,7 +258,7 @@ export default function NewTransferModal() {
             <span className="text-[10px] font-black tracking-widest text-gray-600 uppercase block">
               {t.success_receipt_label}
             </span>
-            <div className="my-3 font-mono text-xl font-black text-red-700 tracking-wider">
+            <div className="my-3 font-mono text-xl font-black text-dark-950 tracking-wider">
               {createdParcel.tracking_code}
             </div>
             <div className="text-xs font-semibold text-gray-800 space-y-1 border-t border-b border-gray-200 py-3 my-2">

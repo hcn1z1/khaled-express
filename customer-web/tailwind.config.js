@@ -8,35 +8,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Dark red: bold identity on black
+        // Luxury Champagne Gold palette
         brand: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
-          950: '#450a0a',
+          50: '#faf8f2',
+          100: '#f4eedd',
+          200: '#eadbba',
+          300: '#dec693',
+          400: '#d4b87c', // Primary Champagne Gold highlight & text
+          500: '#c5a358', // Core Champagne Gold
+          600: '#ab883f', // Deep Champagne Gold
+          700: '#8c6d2d',
+          800: '#6b5220',
+          900: '#4b3814',
+          950: '#291e0a',
         },
-        // Pure black base, white text
+        // Premium Caviar / Obsidian Black surfaces
         dark: {
-          950: '#000000',
-          900: '#060606',
-          850: '#0b0b0b',
-          800: '#121212',
-          750: '#1a1a1a',
-          700: '#232323',
-          600: '#2f2f2f',
-          500: '#3d3d3d',
+          950: '#040406', // Pure deep luxury black background
+          900: '#090a0d', // Luxury card & container base
+          850: '#0f1015', // Interactive card surface
+          800: '#15171e', // Elevated pills and surfaces
+          750: '#1d1f28', // Fine luxury border
+          700: '#262935', // Accent border / rings
+          600: '#363a4b', // Secondary borders
+          500: '#4b5065', // Muted slate text
         },
       },
       boxShadow: {
-        'glow-brand': '0 0 40px -10px rgba(220, 38, 38, 0.45)',
-        card: '0 8px 30px -6px rgba(0, 0, 0, 0.6)',
+        'glow-brand': '0 0 35px -5px rgba(212, 184, 124, 0.35)',
+        'glow-brand-lg': '0 0 60px -10px rgba(212, 184, 124, 0.45)',
+        card: '0 10px 30px -10px rgba(0, 0, 0, 0.85)',
       },
       keyframes: {
         'fade-in': {

@@ -16,7 +16,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen bg-dark-900 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-dark-950 text-slate-100 flex flex-col">
       {/* Skip to Main Content Link for Keyboard Accessibility */}
       <a
         href="#main-content"
@@ -29,16 +29,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <Navbar />
       </ErrorBoundary>
 
-      <ErrorBoundary fallbackTitle="Erreur dans les alertes navettes">
-        <LiveShuttleTicker />
-      </ErrorBoundary>
-
       <main id="main-content" className="flex-1">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-dark-800 bg-black mt-4">
+      <footer className="border-t border-dark-800 bg-dark-950 mt-4">
         <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-start">
             <div>
@@ -56,13 +52,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <span>
                 &copy; {new Date().getFullYear()} Khaled Express. {t.footer_rights}
               </span>
-              <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 text-brand-300 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" />
                 {t.footer_system_ok}
               </span>
             </div>
           </div>
-          <div className="mt-8 pt-6 border-t border-dark-900 text-center sm:text-start">
+          <div className="mt-8 pt-6 border-t border-dark-800 text-center sm:text-start">
             <Link href="/" className="text-[11px] text-slate-500 hover:text-brand-400 transition-colors">
               khaled-express.dz — {t.brand_tagline}
             </Link>

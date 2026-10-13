@@ -189,15 +189,15 @@ export default function RateCalculator() {
               {/* Inclusions list */}
               <div className="space-y-2 mb-6 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <Check className="w-4 h-4 text-brand-400 shrink-0" />
                   <span>{isAr ? 'تتبع بالباركود Code 128' : 'Traçabilité Code-barres Code 128'}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Bell className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <Bell className="w-4 h-4 text-brand-400 shrink-0" />
                   <span>{isAr ? 'رسالة SMS مجانية فور الوصول' : 'Notification SMS gratuite au destinataire'}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-brand-400 shrink-0" />
                   <span>{isAr ? 'حفظ مؤمن في مكتب الاستلام' : 'Garde sécurisée 48h au guichet'}</span>
                 </div>
               </div>

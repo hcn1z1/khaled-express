@@ -91,7 +91,7 @@ export default function CustomerDashboard() {
             const Icon = s.meta.icon;
             const accent =
               s.status === 'DELIVERED'
-                ? 'emerald'
+                ? 'brand'
                 : s.status === 'DISPATCHED'
                 ? 'blue'
                 : s.status === 'RECEIVED_AT_DESTINATION'

@@ -4,10 +4,10 @@
 
 :root {
   color-scheme: dark;
-  --color-bg-base: #060606;
-  --color-bg-track: #000000;
-  --color-bg-thumb: #2f2f2f;
-  --color-brand-primary: #dc2626;
+  --color-bg-base: #040406;
+  --color-bg-track: #020204;
+  --color-bg-thumb: #1d1f28;
+  --color-brand-primary: #d4b87c;
 }
 
 html {
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  color: #f1f5f9;
+  color: #f5f6f8;
   background: var(--color-bg-base);
   min-height: 100vh;
   font-family: var(--font-inter), var(--font-tajawal), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -28,8 +28,8 @@ body {
 }
 
 ::selection {
-  background: rgba(220, 38, 38, 0.4);
-  color: #fff;
+  background: rgba(212, 184, 124, 0.35);
+  color: #ffffff;
 }
 
 /* Legacy animate-in classes used across components */
@@ -86,7 +86,7 @@ body {
 }
 
 .text-gradient-shimmer {
-  background: linear-gradient(90deg, #dc2626 0%, #fca5a5 25%, #ffffff 50%, #f87171 75%, #dc2626 100%);
+  background: linear-gradient(90deg, #d4b87c 0%, #fef5e0 25%, #ffffff 50%, #e8d09e 75%, #d4b87c 100%);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
@@ -96,13 +96,13 @@ body {
 
 @keyframes ping-glow {
   0% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6);
+    box-shadow: 0 0 0 0 rgba(212, 184, 124, 0.6);
   }
   70% {
-    box-shadow: 0 0 0 16px rgba(220, 38, 38, 0);
+    box-shadow: 0 0 0 16px rgba(212, 184, 124, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    box-shadow: 0 0 0 0 rgba(212, 184, 124, 0);
   }
 }
 
