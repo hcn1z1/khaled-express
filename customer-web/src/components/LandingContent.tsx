@@ -330,25 +330,33 @@ export default function LandingContent() {
           </motion.div>
 
           <ol className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Animated Connector line (desktop) */}
+            {/* Animated Connector line connecting step 1 center to step 4 center */}
             <div
-              className="hidden lg:block absolute top-7 inset-x-10 h-0.5 bg-dark-750 overflow-hidden"
+              className="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-1 bg-dark-800 rounded-full overflow-hidden"
               aria-hidden="true"
             >
+              {/* Static gradient track connecting the steps */}
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-600/40 via-dark-700 to-emerald-500/40" />
+
+              {/* Moving light beam that travels completely from Step 1 through Step 4 */}
               <motion.div
-                initial={{ x: '-100%' }}
-                animate={{ x: '100%' }}
+                initial={{ left: isAr ? '110%' : '-15%' }}
+                animate={{ left: isAr ? '-15%' : '110%' }}
                 transition={{
                   repeat: Infinity,
-                  duration: 3,
+                  duration: 3.2,
                   ease: 'easeInOut',
                 }}
-                className="w-1/3 h-full bg-gradient-to-r from-transparent via-brand-500 to-emerald-400"
-              />
+                className="absolute inset-y-0 w-36 -translate-x-1/2 bg-gradient-to-r from-transparent via-brand-400 to-emerald-400 shadow-glow-brand"
+              >
+                {/* Glowing spark on the leading edge reaching Step 4 */}
+                <span className="absolute end-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-emerald-300 shadow-[0_0_12px_#10b981]" />
+              </motion.div>
             </div>
 
             {steps.map((step, i) => {
               const StepIcon = step.icon;
+              const isLastStep = i === 3;
               return (
                 <motion.li
                   key={step.title}
@@ -362,7 +370,11 @@ export default function LandingContent() {
                     <motion.div
                       whileHover={{ scale: 1.15, rotate: 6 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                      className="w-14 h-14 rounded-2xl bg-dark-850 border-2 border-brand-600/70 text-brand-400 flex items-center justify-center text-xl font-black shrink-0 relative z-10 shadow-glow-brand group-hover:border-brand-500 group-hover:bg-dark-800 transition-colors"
+                      className={`w-14 h-14 rounded-2xl bg-dark-850 border-2 flex items-center justify-center text-center leading-none text-xl font-black shrink-0 relative z-10 transition-all select-none ${
+                        isLastStep
+                          ? 'border-emerald-500/80 text-emerald-400 shadow-[0_0_25px_rgba(16,185,129,0.35)] group-hover:border-emerald-400 group-hover:bg-dark-800'
+                          : 'border-brand-600/70 text-brand-400 shadow-glow-brand group-hover:border-brand-500 group-hover:bg-dark-800'
+                      }`}
                     >
                       <span>{i + 1}</span>
                     </motion.div>

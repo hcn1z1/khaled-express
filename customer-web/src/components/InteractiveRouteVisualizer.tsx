@@ -2,7 +2,18 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Truck, Clock, MapPin, ArrowRight, ArrowLeft, ShieldCheck, Sparkles, Navigation } from 'lucide-react';
+import {
+  Truck,
+  Clock,
+  MapPin,
+  ArrowRight,
+  ArrowLeft,
+  ShieldCheck,
+  Sparkles,
+  Navigation,
+  RotateCcw,
+  CheckCircle2,
+} from 'lucide-react';
 import { useSite } from '@/lib/site-context';
 
 type Direction = 'alg_to_eul' | 'eul_to_alg';
@@ -12,9 +23,21 @@ export default function InteractiveRouteVisualizer() {
   const isAr = lang === 'ar';
   const [direction, setDirection] = useState<Direction>('alg_to_eul');
   const [activeStation, setActiveStation] = useState<number | null>(null);
+  const [tripCount, setTripCount] = useState(0);
+  const [isArrived, setIsArrived] = useState(false);
 
   const isAlgToEul = direction === 'alg_to_eul';
-  const startsAtLeft = isAlgToEul !== isAr;
+
+  const handleDirectionChange = (newDir: Direction) => {
+    setDirection(newDir);
+    setIsArrived(false);
+    setTripCount((c) => c + 1);
+  };
+
+  const handleReplay = () => {
+    setIsArrived(false);
+    setTripCount((c) => c + 1);
+  };
 
   const stations = isAlgToEul
     ? [
@@ -114,7 +137,7 @@ export default function InteractiveRouteVisualizer() {
           >
             {isAr
               ? 'تتبع حركة الشحن الحي بين الجزائر والعلمة'
-              : "La Ligne Express Quotidienne en Temps Réel"}
+              : 'La Ligne Express Quotidienne en Temps Réel'}
           </motion.h2>
 
           <motion.p
@@ -140,27 +163,27 @@ export default function InteractiveRouteVisualizer() {
           <div className="inline-flex p-1.5 rounded-2xl bg-dark-850 border border-dark-750 shadow-card">
             <button
               type="button"
-              onClick={() => setDirection('alg_to_eul')}
+              onClick={() => handleDirectionChange('alg_to_eul')}
               className={`relative px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 isAlgToEul
                   ? 'bg-brand-600 text-white shadow-glow-brand'
                   : 'text-slate-400 hover:text-white hover:bg-dark-800'
               }`}
             >
-              <Navigation className={`w-3.5 h-3.5 ${isAlgToEul ? 'rotate-45' : ''}`} />
+              <Navigation className="w-3.5 h-3.5 rotate-45" />
               <span>{isAr ? 'الجزائر ➔ العلمة' : 'Alger ➔ El Eulma'}</span>
             </button>
 
             <button
               type="button"
-              onClick={() => setDirection('eul_to_alg')}
+              onClick={() => handleDirectionChange('eul_to_alg')}
               className={`relative px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 !isAlgToEul
                   ? 'bg-brand-600 text-white shadow-glow-brand'
                   : 'text-slate-400 hover:text-white hover:bg-dark-800'
               }`}
             >
-              <Navigation className={`w-3.5 h-3.5 ${!isAlgToEul ? '-rotate-135' : ''}`} />
+              <Navigation className="w-3.5 h-3.5 -rotate-135" />
               <span>{isAr ? 'العلمة ➔ الجزائر' : 'El Eulma ➔ Alger'}</span>
             </button>
           </div>
@@ -181,24 +204,60 @@ export default function InteractiveRouteVisualizer() {
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-dark-750 mb-8 text-xs">
             <div className="flex items-center gap-3">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+                <span
+                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
+                    isArrived ? 'bg-emerald-400' : 'bg-brand-400'
+                  } opacity-75`}
+                />
+                <span
+                  className={`relative inline-flex rounded-full h-3 w-3 ${
+                    isArrived ? 'bg-emerald-500' : 'bg-brand-500'
+                  }`}
+                />
               </span>
               <span className="text-white font-bold">
                 {isAr ? 'الطريق السيار A2 : حركة سلسة' : 'Autoroute A2 : Trafic Fluide'}
               </span>
+              <span
+                className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${
+                  isArrived
+                    ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
+                    : 'bg-brand-500/15 text-brand-300 border-brand-500/30'
+                }`}
+              >
+                {isArrived
+                  ? isAr
+                    ? 'تم الوصول إلى الوجهة'
+                    : 'Arrivé à destination'
+                  : isAr
+                  ? 'في الطريق...'
+                  : 'En transit...'}
+              </span>
             </div>
 
-            <div className="flex items-center gap-4 text-slate-300">
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-brand-400" />
-                <span>{isAr ? 'زمن العبور : ~ 3h30' : 'Temps moyen : ~ 3h30'}</span>
-              </span>
-              <span className="hidden sm:inline-block text-dark-600">•</span>
-              <span className="hidden sm:flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>{isAr ? 'مراقبة بالباركود' : 'Suivi Code-barres'}</span>
-              </span>
+            <div className="flex items-center gap-3">
+              {/* Replay action */}
+              <button
+                type="button"
+                onClick={handleReplay}
+                aria-label={isAr ? 'إعادة تشغيل الرحلة' : 'Rejouer le trajet'}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-dark-800 hover:bg-dark-750 border border-dark-700 hover:border-brand-500/50 text-slate-300 hover:text-white text-xs font-semibold transition-all active:scale-95 shadow-sm"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-brand-400" />
+                <span>{isAr ? 'إعادة الرحلة' : 'Rejouer'}</span>
+              </button>
+
+              <div className="flex items-center gap-4 text-slate-300">
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4 text-brand-400" />
+                  <span>{isAr ? 'زمن العبور : ~ 3h30' : 'Temps moyen : ~ 3h30'}</span>
+                </span>
+                <span className="hidden sm:inline-block text-dark-600">•</span>
+                <span className="hidden sm:flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>{isAr ? 'مراقبة بالباركود' : 'Suivi Code-barres'}</span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -212,39 +271,37 @@ export default function InteractiveRouteVisualizer() {
                 style={{ backgroundSize: '24px 2px' }}
               />
 
-              {/* Progress active glow line */}
+              {/* Progress active glow line: travels from left to right, then stops at 100% */}
               <motion.div
-                key={direction}
+                key={`track-${direction}-${tripCount}`}
                 initial={{ width: '0%' }}
                 animate={{ width: '100%' }}
                 transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  repeatType: 'reverse',
-                  ease: 'linear',
+                  duration: 4.8,
+                  ease: [0.25, 0.1, 0.25, 1],
                 }}
-                className={`absolute inset-y-0 pointer-events-none ${
-                  startsAtLeft
-                    ? 'left-0 bg-gradient-to-r from-brand-600/30 via-brand-500/50 to-emerald-500/50'
-                    : 'right-0 bg-gradient-to-l from-brand-600/30 via-brand-500/50 to-emerald-500/50'
-                }`}
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-600/30 via-brand-500/50 to-emerald-500/50 pointer-events-none"
               />
 
-              {/* Animated Vehicle / Shuttle */}
+              {/* Animated Vehicle: travels from left (4%) to right (96%), then stops! */}
               <motion.div
-                key={`truck-${direction}`}
-                initial={{ left: startsAtLeft ? '3%' : '94%' }}
-                animate={{ left: startsAtLeft ? '94%' : '3%' }}
+                key={`truck-${direction}-${tripCount}`}
+                initial={{ left: '4%' }}
+                animate={{ left: '96%' }}
+                onAnimationComplete={() => setIsArrived(true)}
                 transition={{
-                  duration: 7,
-                  repeat: Infinity,
-                  repeatType: 'reverse',
-                  ease: 'easeInOut',
+                  duration: 4.8,
+                  ease: [0.25, 0.1, 0.25, 1],
                 }}
                 className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 flex items-center justify-center"
               >
-                <div className="w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-glow-brand ring-4 ring-brand-500/30">
-                  <Truck className={`w-4 h-4 ${!startsAtLeft ? 'scale-x-[-1]' : ''}`} />
+                <div className="relative">
+                  <div className="w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center shadow-glow-brand ring-4 ring-brand-500/30">
+                    <Truck className="w-4 h-4" />
+                  </div>
+                  {isArrived && (
+                    <span className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] animate-ping" />
+                  )}
                 </div>
               </motion.div>
             </div>
