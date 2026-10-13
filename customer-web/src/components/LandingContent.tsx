@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import TrackingSection from '@/components/TrackingSection';
 import InteractiveRouteVisualizer from '@/components/InteractiveRouteVisualizer';
+import HeroMapBackground from '@/components/HeroMapBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { translations } from '@/lib/i18n';
 import { useSite } from '@/lib/site-context';
@@ -111,7 +112,10 @@ export default function LandingContent() {
   return (
     <>
       {/* Hero Section: Two-Column Split Layout */}
-      <section aria-label="Hero" className="relative overflow-hidden pt-8 pb-14 lg:pt-12 lg:pb-20">
+      <section
+        aria-label="Hero"
+        className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex flex-col justify-between pt-6 pb-6 sm:pt-8 sm:pb-8 lg:pt-10 lg:pb-8"
+      >
         {/* Ambient Warm Sunset Backlight */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           {/* Golden radial ambient behind right van column */}
@@ -120,8 +124,8 @@ export default function LandingContent() {
           <div className="absolute -top-24 -start-24 w-[480px] h-[480px] bg-brand-600/10 rounded-full blur-[130px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex-1 flex flex-col justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center my-auto py-4 sm:py-6">
             {/* Left Column: Headlines, Metrics & Quick Tracking Input */}
             <div className="lg:col-span-7 xl:col-span-7 text-start">
               {/* Eyebrow with gold van icon and horizontal rule */}
@@ -129,7 +133,7 @@ export default function LandingContent() {
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex items-center gap-3 mb-5 text-brand-400"
+                className="flex items-center gap-3 mb-4 text-brand-400"
               >
                 <div className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-brand-400 shrink-0" />
@@ -181,7 +185,7 @@ export default function LandingContent() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.32 }}
-                className="mt-7 sm:mt-9"
+                className="mt-7 sm:mt-8"
               >
                 <ErrorBoundary fallbackTitle="Erreur dans le suivi de colis">
                   <TrackingSection />
@@ -191,74 +195,17 @@ export default function LandingContent() {
 
             {/* Right Column: Route Arc & Mercedes-Benz Sprinter Stock Photo */}
             <div className="lg:col-span-5 xl:col-span-5 relative">
+              {/* Dark cartographic vector road network map background */}
+              <HeroMapBackground />
+
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="relative flex flex-col items-center"
+                className="relative z-10 flex flex-col items-center"
               >
-                {/* Highway Arc SVG connecting Alger to El Eulma with animated gold van */}
-                <div className="w-full max-w-md mx-auto mb-3 relative px-2" aria-hidden="true">
-                  <svg
-                    className="w-full h-20 overflow-visible"
-                    viewBox="0 0 360 70"
-                    fill="none"
-                  >
-                    {/* Node labels inside SVG for pixel-perfect alignment */}
-                    <text x="35" y="20" fill="#dec693" fontSize="13" fontWeight="bold" textAnchor="middle">
-                      Alger
-                    </text>
-                    <text x="325" y="20" fill="#dec693" fontSize="13" fontWeight="bold" textAnchor="middle">
-                      El Eulma
-                    </text>
-
-                    {/* Background dashed route curve */}
-                    <path
-                      d="M 35 52 Q 180 12 325 52"
-                      stroke="rgba(212, 184, 124, 0.25)"
-                      strokeWidth="2"
-                      strokeDasharray="4 4"
-                      fill="none"
-                    />
-
-                    {/* Glowing champagne animated route arc */}
-                    <path
-                      d="M 35 52 Q 180 12 325 52"
-                      stroke="#d4b87c"
-                      strokeWidth="2.5"
-                      strokeDasharray="8 6"
-                      strokeLinecap="round"
-                      fill="none"
-                      className="route-flow-line"
-                    />
-
-                    {/* Moving Gold Delivery Van */}
-                    <g>
-                      <animateMotion
-                        path="M 35 52 Q 180 12 325 52"
-                        dur="4.5s"
-                        repeatCount="indefinite"
-                        rotate="auto"
-                      />
-                      {/* Ambient vehicle glow */}
-                      <circle r="12" fill="#d4b87c" opacity="0.35" />
-                      {/* Van mini container */}
-                      <rect x="-9" y="-6" width="18" height="12" rx="2.5" fill="#d4b87c" />
-                      <circle cx="5" cy="6" r="2.2" fill="#090a0d" />
-                      <circle cx="-5" cy="6" r="2.2" fill="#090a0d" />
-                    </g>
-
-                    {/* Origin & Destination Nodes with Pins */}
-                    <circle cx="35" cy="52" r="5" fill="#d4b87c" />
-                    <circle cx="35" cy="52" r="11" fill="#d4b87c" opacity="0.3" className="animate-ping" />
-
-                    <circle cx="325" cy="52" r="5" fill="#d4b87c" />
-                    <circle cx="325" cy="52" r="11" fill="#d4b87c" opacity="0.3" className="animate-ping" />
-                  </svg>
-                </div>
-
                 {/* Real Stock Van Photo (from free-stock-images-mcp) */}
-                <div className="relative w-full rounded-3xl overflow-hidden border border-brand-500/30 bg-dark-900 shadow-[0_25px_70px_rgba(0,0,0,0.9)] group">
+                <div className="relative w-full rounded-3xl overflow-hidden border border-brand-500/35 bg-dark-900 shadow-[0_25px_70px_rgba(0,0,0,0.95)] shadow-glow-brand/20 group">
                   {/* Champagne ambient backlight glow */}
                   <div className="absolute -inset-2 bg-gradient-to-tr from-brand-500/25 via-brand-400/15 to-transparent rounded-[2.5rem] blur-2xl -z-10 pointer-events-none" />
 
@@ -301,7 +248,7 @@ export default function LandingContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-14 sm:mt-18 pt-8 border-t border-dark-800/80"
+            className="mt-auto pt-6 sm:pt-8 pb-1 border-t border-dark-800/80"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {trustPillars.map((pillar) => {
@@ -328,7 +275,7 @@ export default function LandingContent() {
             </div>
 
             {/* Slogan Divider */}
-            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-10 text-[11px] sm:text-xs font-bold tracking-[0.25em] text-brand-400/90 uppercase text-center">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 text-[11px] sm:text-xs font-bold tracking-[0.25em] text-brand-400/90 uppercase text-center">
               <span>KHALED EXPRESS</span>
               <span className="text-brand-500/40">—</span>
               <span>PLUS PROCHE DE VOUS</span>

@@ -81,31 +81,10 @@ export default function BrandLogo({
   return (
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
       {emblem}
-      <div className="flex flex-col text-start">
-        <div className="flex items-center gap-2.5">
-          <span className={`font-black tracking-tight text-white ${titleSizes[size]}`}>
-            KHALED <span className="text-brand-400">EXPRESS</span>
-          </span>
-          {variant === 'full' && (
-            <div className="hidden xl:flex flex-col text-start ps-2.5 border-s border-dark-750">
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-300 border border-brand-500/25 tracking-wide">
-                ALGER ↔ EL EULMA
-              </span>
-              <span className="text-[9px] text-slate-400 font-medium mt-0.5">
-                Transport de colis & marchandises
-              </span>
-            </div>
-          )}
-        </div>
-        {showSubtitle && (
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-400 font-semibold tracking-normal leading-tight mt-0.5">
-            <span>Colis</span>
-            <span className="text-brand-400">•</span>
-            <span>Rapide</span>
-            <span className="text-brand-400">•</span>
-            <span>Sécurisé</span>
-          </div>
-        )}
+      <div className="flex items-center text-start">
+        <span className={`font-black tracking-tight text-white ${titleSizes[size]}`}>
+          KHALED <span className="text-brand-400">EXPRESS</span>
+        </span>
       </div>
     </div>
   );
