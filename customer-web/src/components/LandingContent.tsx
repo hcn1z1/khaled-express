@@ -1,6 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
@@ -29,6 +34,49 @@ export default function LandingContent() {
   const { lang, openTransfer } = useSite();
   const t = translations[lang];
   const isAr = lang === 'ar';
+
+  // Spotlight window: the van card is a cut-out revealing the same background
+  // image at full brightness, so the inner copy must stay pixel-aligned with
+  // the section-sized background layer. Track the card's offset within the
+  // section and the section size to keep both renderings identical.
+  const heroSectionRef = useRef<HTMLElement | null>(null);
+  const vanWindowRef = useRef<HTMLDivElement | null>(null);
+  const [windowOffset, setWindowOffset] = useState({ x: 0, y: 0 });
+  const [heroSize, setHeroSize] = useState({ w: 0, h: 0 });
+
+  const measureSpotlight = useCallback(() => {
+    const section = heroSectionRef.current;
+    const anchor = vanWindowRef.current;
+    if (!section || !anchor) return;
+    let x = 0;
+    let y = 0;
+    let cur: HTMLElement | null = anchor;
+    while (cur && cur !== section) {
+      x += cur.offsetLeft;
+      y += cur.offsetTop;
+      cur = cur.offsetParent as HTMLElement | null;
+    }
+    setWindowOffset({ x, y });
+    setHeroSize({ w: section.clientWidth, h: section.clientHeight });
+  }, []);
+
+  useLayoutEffect(() => {
+    measureSpotlight();
+    const section = heroSectionRef.current;
+    const anchor = vanWindowRef.current;
+    if (!section || !anchor) return;
+    const ro = new ResizeObserver(() => measureSpotlight());
+    ro.observe(section);
+    ro.observe(anchor);
+    window.addEventListener('resize', measureSpotlight);
+    const t = window.setTimeout(measureSpotlight, 350);
+    document.fonts?.ready.then(() => measureSpotlight());
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', measureSpotlight);
+      window.clearTimeout(t);
+    };
+  }, [measureSpotlight, isAr]);
 
   const trustPillars = [
     {
@@ -112,23 +160,24 @@ export default function LandingContent() {
     <>
       {/* Hero Section: Two-Column Split Layout */}
       <section
+        ref={heroSectionRef}
         aria-label="Hero"
         className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex flex-col justify-between pt-6 pb-6 sm:pt-8 sm:pb-8 lg:pt-10 lg:pb-8"
       >
         {/* Cinematic Highway Landscape Background combining seamlessly with the hero section */}
         <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
-          {/* Panoramic Highway Stock Image */}
+          {/* Cinematic van-on-highway scene: van sits behind the card on the right, fading to pure dark behind the text */}
           <Image
-            src="/hero-highway-bg.jpg"
-            alt="Corridor autoroutier Alger - El Eulma"
+            src="/hero-van-highway.jpg"
+            alt="Fourgon express Khaled Express sur l'autoroute Alger - El Eulma"
             fill
             priority
             sizes="100vw"
             className={`object-cover ${
               isAr
-                ? 'object-left lg:object-[20%_center] -scale-x-105 scale-y-105'
-                : 'object-right lg:object-[80%_center] scale-105'
-            } opacity-40 transition-transform duration-1000`}
+                ? 'object-left lg:object-[0%_center] -scale-x-105 scale-y-105'
+                : 'object-right lg:object-[100%_center] scale-105'
+            } opacity-45 transition-transform duration-1000`}
           />
 
           {/* Smooth horizontal gradient fade: pure dark behind text for legibility, revealing highway behind the van */}
@@ -231,16 +280,36 @@ export default function LandingContent() {
                   {/* Outer Warm Ambient Bloom */}
                   <div className="absolute -inset-2 bg-gradient-to-tr from-brand-500/30 via-brand-400/15 to-transparent rounded-[2.5rem] blur-2xl -z-10 pointer-events-none" />
 
-                  {/* Van Photo Container */}
-                  <div className="hero-photo-overlay relative w-full aspect-[4/3] sm:aspect-[16/11]">
-                    <Image
-                      src="/hero-van-card.jpg"
-                      alt="Fourgon express Mercedes-Benz Sprinter Khaled Express Alger - El Eulma"
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 550px"
-                      className="object-cover object-center group-hover:scale-102 transition-transform duration-700"
-                    />
+                  {/* Van Photo Container: a cut-out window over the hero background */}
+                  <div
+                    ref={vanWindowRef}
+                    className="hero-photo-overlay relative w-full aspect-[4/3] sm:aspect-[16/11]"
+                  >
+                    {/* Spotlight copy of the background image, translated back so it
+                        coincides exactly with the section-sized background layer */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute top-0 left-0 pointer-events-none"
+                      style={{
+                        width: heroSize.w || '100%',
+                        height: heroSize.h || '100%',
+                        transform: `translate(${-windowOffset.x}px, ${-windowOffset.y}px)`,
+                        visibility: heroSize.w ? 'visible' : 'hidden',
+                      }}
+                    >
+                      <Image
+                        src="/hero-van-highway.jpg"
+                        alt=""
+                        fill
+                        priority
+                        sizes="100vw"
+                        className={`object-cover transition-[filter] duration-700 group-hover:brightness-110 ${
+                          isAr
+                            ? 'object-left lg:object-[0%_center] -scale-x-105 scale-y-105'
+                            : 'object-right lg:object-[100%_center] scale-105'
+                        }`}
+                      />
+                    </div>
 
                     {/* Subtle perimeter vignettes for clean box containment */}
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-950/85 via-transparent to-dark-950/30 pointer-events-none" />
