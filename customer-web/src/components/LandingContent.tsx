@@ -20,7 +20,6 @@ import {
 } from 'lucide-react';
 import TrackingSection from '@/components/TrackingSection';
 import InteractiveRouteVisualizer from '@/components/InteractiveRouteVisualizer';
-import HeroMapBackground from '@/components/HeroMapBackground';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { translations } from '@/lib/i18n';
 import { useSite } from '@/lib/site-context';
@@ -116,10 +115,36 @@ export default function LandingContent() {
         aria-label="Hero"
         className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex flex-col justify-between pt-6 pb-6 sm:pt-8 sm:pb-8 lg:pt-10 lg:pb-8"
       >
-        {/* Ambient Warm Sunset Backlight */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          {/* Golden radial ambient behind right van column */}
-          <div className="absolute top-1/4 end-0 w-[620px] h-[520px] bg-gradient-to-br from-brand-500/18 via-brand-600/10 to-transparent rounded-full blur-[140px]" />
+        {/* Cinematic Highway Landscape Background combining seamlessly with the hero section */}
+        <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
+          {/* Panoramic Highway Stock Image */}
+          <Image
+            src="/hero-highway-bg.jpg"
+            alt="Corridor autoroutier Alger - El Eulma"
+            fill
+            priority
+            sizes="100vw"
+            className={`object-cover ${
+              isAr
+                ? 'object-left lg:object-[20%_center] -scale-x-105 scale-y-105'
+                : 'object-right lg:object-[80%_center] scale-105'
+            } opacity-40 transition-transform duration-1000`}
+          />
+
+          {/* Smooth horizontal gradient fade: pure dark behind text for legibility, revealing highway behind the van */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-r ${
+              isAr
+                ? 'from-transparent via-dark-950/60 sm:via-dark-950/75 lg:via-dark-950/90 to-dark-950'
+                : 'from-dark-950 via-dark-950/90 sm:via-dark-950/75 lg:via-dark-950/60 to-transparent'
+            }`}
+          />
+          
+          {/* Vertical vignettes for seamless transitions with header and trust pillars strip */}
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-950/90 via-transparent to-dark-950" />
+
+          {/* Warm Champagne / Gold Radial Glow behind the van card */}
+          <div className="absolute top-1/4 end-0 w-[620px] h-[520px] bg-gradient-to-br from-brand-500/20 via-brand-600/10 to-transparent rounded-full blur-[140px]" />
           {/* Subtle top-left brand aura */}
           <div className="absolute -top-24 -start-24 w-[480px] h-[480px] bg-brand-600/10 rounded-full blur-[130px]" />
         </div>
@@ -193,49 +218,58 @@ export default function LandingContent() {
               </motion.div>
             </div>
 
-            {/* Right Column: Route Arc & Mercedes-Benz Sprinter Stock Photo */}
+            {/* Right Column: Van on a Box Showcase combining seamlessly with Highway Background */}
             <div className="lg:col-span-5 xl:col-span-5 relative">
-              {/* Dark cartographic vector road network map background */}
-              <HeroMapBackground />
-
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.94, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="relative z-10 flex flex-col items-center"
               >
-                {/* Real Stock Van Photo (from free-stock-images-mcp) */}
-                <div className="relative w-full rounded-3xl overflow-hidden border border-brand-500/35 bg-dark-900 shadow-[0_25px_70px_rgba(0,0,0,0.95)] shadow-glow-brand/20 group">
-                  {/* Champagne ambient backlight glow */}
-                  <div className="absolute -inset-2 bg-gradient-to-tr from-brand-500/25 via-brand-400/15 to-transparent rounded-[2.5rem] blur-2xl -z-10 pointer-events-none" />
+                {/* Elevated Van Box with Champagne / Gold Rim Glow */}
+                <div className="relative w-full rounded-3xl overflow-hidden border border-brand-500/40 bg-dark-900/80 shadow-[0_25px_70px_rgba(0,0,0,0.95)] shadow-glow-brand/25 group backdrop-blur-md">
+                  {/* Outer Warm Ambient Bloom */}
+                  <div className="absolute -inset-2 bg-gradient-to-tr from-brand-500/30 via-brand-400/15 to-transparent rounded-[2.5rem] blur-2xl -z-10 pointer-events-none" />
 
-                  {/* Stock Image */}
+                  {/* Van Photo Container */}
                   <div className="hero-photo-overlay relative w-full aspect-[4/3] sm:aspect-[16/11]">
                     <Image
-                      src="/hero-van-stock.jpg"
-                      alt="Fourgon express Mercedes-Benz Sprinter en transit Alger - El Eulma"
+                      src="/hero-van-card.jpg"
+                      alt="Fourgon express Mercedes-Benz Sprinter Khaled Express Alger - El Eulma"
                       fill
                       priority
                       sizes="(max-width: 768px) 100vw, 550px"
                       className="object-cover object-center group-hover:scale-102 transition-transform duration-700"
                     />
 
-                    {/* Multi-layer dark vignettes to fade daytime background into caviar black */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40 pointer-events-none" />
+                    {/* Subtle perimeter vignettes for clean box containment */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-950/85 via-transparent to-dark-950/30 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-dark-950/20 via-transparent to-dark-950/30 pointer-events-none" />
 
                     {/* Khaled Express vehicle emblem badge overlay */}
-                    <div className="hero-photo-badge absolute bottom-4 start-4 sm:bottom-5 sm:start-5 flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-brand-500/35 text-white shadow-xl">
-                      <Truck className="w-4 h-4 text-brand-400 shrink-0" />
-                      <div className="text-start leading-none">
+                    <div className="hero-photo-badge absolute bottom-4 start-4 sm:bottom-5 sm:start-5 flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-black/85 backdrop-blur-md border border-brand-500/35 text-white shadow-2xl">
+                      <div className="w-8 h-8 rounded-lg bg-brand-500/15 border border-brand-500/30 flex items-center justify-center shrink-0">
+                        <Truck className="w-4 h-4 text-brand-400" />
+                      </div>
+                      <div className="text-start leading-tight">
                         <span className="block font-black text-xs text-white tracking-wide">
                           KHALED <span className="text-brand-400">EXPRESS</span>
                         </span>
-                        <span className="text-[9px] text-slate-300 font-mono tracking-wider">
+                        <span className="text-[10px] text-slate-300 font-mono tracking-wider">
                           ALGER ↔ EL EULMA
                         </span>
                       </div>
+                    </div>
+
+                    {/* Live Transit indicator pill top-right */}
+                    <div className="absolute top-4 end-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-white shadow-lg text-[11px] font-semibold">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                      </span>
+                      <span className="text-slate-200">
+                        {isAr ? 'رحلات يومية منتظمة' : 'Navette active'}
+                      </span>
                     </div>
                   </div>
                 </div>
