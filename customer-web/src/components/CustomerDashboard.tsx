@@ -151,7 +151,7 @@ export default function CustomerDashboard() {
             >
               <div>
                 <div className="flex items-center justify-between mb-3 gap-2">
-                  <span className="font-mono text-xs font-bold text-brand-400">{parcel.tracking_code}</span>
+                  <span className="font-mono text-xs font-bold text-brand-400 parcel-tracking-code">{parcel.tracking_code}</span>
                   <StatusBadge status={parcel.status} lang={lang} short />
                 </div>
 
@@ -170,7 +170,7 @@ export default function CustomerDashboard() {
                     {t.content_label} : <span className="text-slate-300">{parcel.description}</span>
                   </p>
                   <p>
-                    {t.fee} : <span className="text-brand-400 font-bold">{parcel.fee_amount} DZD</span> (
+                    {t.fee} : <span className="text-brand-400 font-bold parcel-fee-amount">{parcel.fee_amount} DZD</span> (
                     {parcel.payment_status === 'PAID' ? t.paid : t.unpaid})
                   </p>
                 </div>

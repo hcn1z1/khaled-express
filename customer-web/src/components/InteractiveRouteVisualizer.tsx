@@ -280,7 +280,7 @@ export default function InteractiveRouteVisualizer() {
                   duration: 4.8,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-600/30 via-brand-500/50 to-brand-400/50 pointer-events-none"
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-600/30 via-brand-500/50 to-brand-400/50 pointer-events-none route-progress-line"
               />
 
               {/* Animated Vehicle: travels from left (4%) to right (96%), then stops! */}
@@ -300,7 +300,7 @@ export default function InteractiveRouteVisualizer() {
                     <Truck className="w-4 h-4" />
                   </div>
                   {isArrived && (
-                    <span className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-brand-300 shadow-[0_0_8px_#d4b87c] animate-ping" />
+                    <span className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-brand-300 shadow-glow-brand animate-ping route-truck-ping" />
                   )}
                 </div>
               </motion.div>

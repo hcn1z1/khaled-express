@@ -210,7 +210,7 @@ export default function LandingContent() {
                   <div className="absolute -inset-2 bg-gradient-to-tr from-brand-500/25 via-brand-400/15 to-transparent rounded-[2.5rem] blur-2xl -z-10 pointer-events-none" />
 
                   {/* Stock Image */}
-                  <div className="relative w-full aspect-[4/3] sm:aspect-[16/11]">
+                  <div className="hero-photo-overlay relative w-full aspect-[4/3] sm:aspect-[16/11]">
                     <Image
                       src="/hero-van-stock.jpg"
                       alt="Fourgon express Mercedes-Benz Sprinter en transit Alger - El Eulma"
@@ -221,12 +221,12 @@ export default function LandingContent() {
                     />
 
                     {/* Multi-layer dark vignettes to fade daytime background into caviar black */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/45 to-transparent pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-dark-950/50 via-transparent to-dark-950/70 pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-dark-950/60 via-transparent to-dark-950/40 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40 pointer-events-none" />
 
                     {/* Khaled Express vehicle emblem badge overlay */}
-                    <div className="absolute bottom-4 start-4 sm:bottom-5 sm:start-5 flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-dark-950/90 backdrop-blur-md border border-brand-500/35 text-white shadow-xl">
+                    <div className="hero-photo-badge absolute bottom-4 start-4 sm:bottom-5 sm:start-5 flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-brand-500/35 text-white shadow-xl">
                       <Truck className="w-4 h-4 text-brand-400 shrink-0" />
                       <div className="text-start leading-none">
                         <span className="block font-black text-xs text-white tracking-wide">
@@ -375,7 +375,7 @@ export default function LandingContent() {
                 className="absolute inset-y-0 w-36 -translate-x-1/2 bg-gradient-to-r from-transparent via-brand-400 to-brand-300 shadow-glow-brand"
               >
                 {/* Glowing spark on the leading edge reaching Step 4 */}
-                <span className="absolute end-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-300 shadow-[0_0_12px_#d4b87c]" />
+                <span className="absolute end-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-300 shadow-glow-brand" />
               </motion.div>
             </div>
 

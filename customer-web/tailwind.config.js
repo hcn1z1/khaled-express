@@ -8,35 +8,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Luxury Champagne Gold palette
+        // Palette colors are CSS variables so the public theme can change by query parameter.
         brand: {
-          50: '#faf8f2',
-          100: '#f4eedd',
-          200: '#eadbba',
-          300: '#dec693',
-          400: '#d4b87c', // Primary Champagne Gold highlight & text
-          500: '#c5a358', // Core Champagne Gold
-          600: '#ab883f', // Deep Champagne Gold
-          700: '#8c6d2d',
-          800: '#6b5220',
-          900: '#4b3814',
-          950: '#291e0a',
+          50: 'rgb(var(--brand-50) / <alpha-value>)',
+          100: 'rgb(var(--brand-100) / <alpha-value>)',
+          200: 'rgb(var(--brand-200) / <alpha-value>)',
+          300: 'rgb(var(--brand-300) / <alpha-value>)',
+          400: 'rgb(var(--brand-400) / <alpha-value>)',
+          500: 'rgb(var(--brand-500) / <alpha-value>)',
+          600: 'rgb(var(--brand-600) / <alpha-value>)',
+          700: 'rgb(var(--brand-700) / <alpha-value>)',
+          800: 'rgb(var(--brand-800) / <alpha-value>)',
+          900: 'rgb(var(--brand-900) / <alpha-value>)',
+          950: 'rgb(var(--brand-950) / <alpha-value>)',
         },
-        // Premium Caviar / Obsidian Black surfaces
         dark: {
-          950: '#040406', // Pure deep luxury black background
-          900: '#090a0d', // Luxury card & container base
-          850: '#0f1015', // Interactive card surface
-          800: '#15171e', // Elevated pills and surfaces
-          750: '#1d1f28', // Fine luxury border
-          700: '#262935', // Accent border / rings
-          600: '#363a4b', // Secondary borders
-          500: '#4b5065', // Muted slate text
+          950: 'rgb(var(--surface-950) / <alpha-value>)',
+          900: 'rgb(var(--surface-900) / <alpha-value>)',
+          850: 'rgb(var(--surface-850) / <alpha-value>)',
+          800: 'rgb(var(--surface-800) / <alpha-value>)',
+          750: 'rgb(var(--surface-750) / <alpha-value>)',
+          700: 'rgb(var(--surface-700) / <alpha-value>)',
+          600: 'rgb(var(--surface-600) / <alpha-value>)',
+          500: 'rgb(var(--surface-500) / <alpha-value>)',
         },
       },
       boxShadow: {
-        'glow-brand': '0 0 35px -5px rgba(212, 184, 124, 0.35)',
-        'glow-brand-lg': '0 0 60px -10px rgba(212, 184, 124, 0.45)',
+        'glow-brand': '0 0 35px -5px rgb(var(--brand-400) / 0.35)',
+        'glow-brand-lg': '0 0 60px -10px rgb(var(--brand-400) / 0.45)',
         card: '0 10px 30px -10px rgba(0, 0, 0, 0.85)',
       },
       keyframes: {

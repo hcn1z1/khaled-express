@@ -7,7 +7,701 @@
   --color-bg-base: #040406;
   --color-bg-track: #020204;
   --color-bg-thumb: #1d1f28;
-  --color-brand-primary: #d4b87c;
+  --color-brand-primary: rgb(var(--brand-400));
+  --brand-50: 250 248 242;
+  --brand-100: 244 238 221;
+  --brand-200: 234 219 186;
+  --brand-300: 222 198 147;
+  --brand-400: 212 184 124;
+  --brand-500: 197 163 88;
+  --brand-600: 171 136 63;
+  --brand-700: 140 109 45;
+  --brand-800: 107 82 32;
+  --brand-900: 75 56 20;
+  --brand-950: 41 30 10;
+  --surface-950: 4 4 6;
+  --surface-900: 9 10 13;
+  --surface-850: 15 16 21;
+  --surface-800: 21 23 30;
+  --surface-750: 29 31 40;
+  --surface-700: 38 41 53;
+  --surface-600: 54 58 75;
+  --surface-500: 75 80 101;
+  --map-line: 255 255 255;
+}
+
+/* Theme 2: red accents on near-black surfaces. */
+html[data-color-theme='2'] {
+  --brand-50: 255 241 242;
+  --brand-100: 255 226 229;
+  --brand-200: 254 202 208;
+  --brand-300: 253 164 175;
+  --brand-400: 248 83 96;
+  --brand-500: 228 48 65;
+  --brand-600: 194 30 49;
+  --brand-700: 157 24 41;
+  --brand-800: 127 29 42;
+  --brand-900: 88 30 40;
+  --brand-950: 69 10 19;
+  --surface-950: 8 8 10;
+  --surface-900: 16 14 16;
+  --surface-850: 27 21 24;
+  --surface-800: 42 28 33;
+  --surface-750: 63 36 43;
+  --surface-700: 84 44 52;
+  --surface-600: 111 56 65;
+  --surface-500: 139 72 82;
+  --color-bg-base: #08080a;
+  --color-bg-track: #050506;
+  --color-bg-thumb: #3f242b;
+  color-scheme: dark;
+}
+
+/* Theme 3: clean white surfaces with strong red accents. */
+html[data-color-theme='3'] {
+  --brand-50: 255 241 242;
+  --brand-100: 255 226 229;
+  --brand-200: 254 202 208;
+  --brand-300: 253 164 175;
+  --brand-400: 220 38 58;
+  --brand-500: 197 27 48;
+  --brand-600: 170 22 42;
+  --brand-700: 142 23 40;
+  --brand-800: 112 25 38;
+  --brand-900: 82 23 32;
+  --brand-950: 51 13 20;
+  --surface-950: 255 255 255;
+  --surface-900: 255 255 255;
+  --surface-850: 249 247 247;
+  --surface-800: 241 237 238;
+  --surface-750: 224 216 218;
+  --surface-700: 207 197 199;
+  --surface-600: 164 151 154;
+  --surface-500: 119 108 111;
+  --map-line: 39 52 68;
+  --color-bg-base: #ffffff;
+  --color-bg-track: #ece9ea;
+  --color-bg-thumb: #cfc5c7;
+  color-scheme: light;
+}
+
+/* Theme 4: white and slate surfaces with a cobalt blue accent. */
+html[data-color-theme='4'] {
+  --brand-50: 239 246 255;
+  --brand-100: 219 234 254;
+  --brand-200: 191 219 254;
+  --brand-300: 147 197 253;
+  --brand-400: 37 99 235;
+  --brand-500: 29 78 216;
+  --brand-600: 30 64 175;
+  --brand-700: 30 58 138;
+  --brand-800: 30 50 105;
+  --brand-900: 23 37 84;
+  --brand-950: 15 23 42;
+  --surface-950: 255 255 255;
+  --surface-900: 250 252 255;
+  --surface-850: 241 245 249;
+  --surface-800: 226 232 240;
+  --surface-750: 203 213 225;
+  --surface-700: 176 190 207;
+  --surface-600: 133 151 174;
+  --surface-500: 100 116 139;
+  --map-line: 39 52 68;
+  --color-bg-base: #ffffff;
+  --color-bg-track: #edf2f8;
+  --color-bg-thumb: #cbd5e1;
+  color-scheme: light;
+}
+
+/* ========================================================================= */
+/* Theme 5: Cyber Matrix / Telemetry Velocity                                 */
+/* Tri-color palette: Electric Mint (#10b981), Cyber Cyan (#06b6d4),         */
+/* Solar Amber (#fbbf24) on Deep Cyber Void oceanic obsidian.                */
+/* ========================================================================= */
+html[data-color-theme='5'] {
+  /* Color 1 (Primary / Velocity): Electric Mint & Emerald */
+  --brand-50: 236 253 245;
+  --brand-100: 209 250 229;
+  --brand-200: 167 243 208;
+  --brand-300: 110 231 183;
+  --brand-400: 52 211 153;
+  --brand-500: 16 185 129;
+  --brand-600: 5 150 105;
+  --brand-700: 4 120 87;
+  --brand-800: 6 95 70;
+  --brand-900: 6 78 59;
+  --brand-950: 2 44 34;
+
+  /* Color 2 (Secondary / Telemetry): Cyber Cyan */
+  --accent-cyan: 6 182 212;
+  --accent-cyan-light: 34 211 238;
+
+  /* Color 3 (Tertiary / Alert & Energy): Solar Amber */
+  --accent-amber: 245 158 11;
+  --accent-amber-light: 251 191 36;
+
+  /* Deep Oceanic Cyber Obsidian Surfaces */
+  --surface-950: 4 12 16;
+  --surface-900: 7 20 28;
+  --surface-850: 11 28 38;
+  --surface-800: 16 38 52;
+  --surface-750: 22 50 68;
+  --surface-700: 30 64 88;
+  --surface-600: 44 92 124;
+  --surface-500: 68 126 166;
+
+  --map-line: 6 182 212;
+  --color-bg-base: #040c10;
+  --color-bg-track: #02070a;
+  --color-bg-thumb: #0e3b4d;
+  color-scheme: dark;
+}
+
+html[data-color-theme='5'] ::selection {
+  background: rgba(6, 182, 212, 0.4);
+  color: #ffffff;
+}
+
+html[data-color-theme='5'] .text-gradient-shimmer {
+  background: linear-gradient(90deg, #34d399 0%, #22d3ee 30%, #ffffff 50%, #fbbf24 75%, #34d399 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 6s ease infinite;
+}
+
+/* Secondary & Tertiary styling on Theme 5 */
+html[data-color-theme='5'] .hero-photo-badge {
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.35);
+}
+
+/* Dispatched stat card in Theme 5: Cyber Cyan glow */
+html[data-color-theme='5'] [class*='border-blue-500'] {
+  border-color: rgba(6, 182, 212, 0.35);
+}
+html[data-color-theme='5'] [class*='text-blue-400'] {
+  color: rgb(34 211 238);
+}
+html[data-color-theme='5'] [class*='bg-blue-500/15'] {
+  background-color: rgba(6, 182, 212, 0.15);
+}
+
+/* Amber/Solar card & Fee tag in Theme 5: Bright Solar Gold */
+html[data-color-theme='5'] [class*='border-amber-500'] {
+  border-color: rgba(245, 158, 11, 0.4);
+}
+html[data-color-theme='5'] [class*='text-amber-400'],
+html[data-color-theme='5'] [class*='text-amber-300'] {
+  color: rgb(251 191 36);
+}
+html[data-color-theme='5'] [class*='bg-amber-500/15'] {
+  background-color: rgba(245, 158, 11, 0.18);
+}
+html[data-color-theme='5'] .parcel-fee-amount {
+  color: rgb(251 191 36);
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
+}
+html[data-color-theme='5'] .route-progress-line {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.25) 0%, rgba(16, 185, 129, 0.5) 50%, rgba(245, 158, 11, 0.6) 100%);
+}
+html[data-color-theme='5'] .route-truck-ping {
+  background-color: rgb(251 191 36);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.85);
+}
+
+/* ========================================================================= */
+/* Theme 6: Tokyo Sunset / Synthwave Horizon                                  */
+/* Tri-color palette: Electric Violet (#8b5cf6), Hot Sunset Coral (#f43f5e),  */
+/* Radiant Sunrise Gold (#fbbf24) on Cosmic Twilight Obsidian.               */
+/* ========================================================================= */
+html[data-color-theme='6'] {
+  /* Color 1 (Primary / Horizon): Electric Violet & Ultra-Indigo */
+  --brand-50: 245 243 255;
+  --brand-100: 237 233 254;
+  --brand-200: 221 214 254;
+  --brand-300: 196 181 253;
+  --brand-400: 167 139 250;
+  --brand-500: 139 92 246;
+  --brand-600: 124 58 237;
+  --brand-700: 109 40 217;
+  --brand-800: 91 33 182;
+  --brand-900: 76 29 149;
+  --brand-950: 46 16 101;
+
+  /* Color 2 (Secondary / Dusk Fire): Hot Sunset Coral & Neon Rose */
+  --accent-coral: 244 63 94;
+  --accent-coral-light: 251 113 133;
+
+  /* Color 3 (Tertiary / Radiance): Sunrise Gold & Sun Amber */
+  --accent-gold: 251 191 36;
+  --accent-gold-light: 253 224 71;
+
+  /* Deep Cosmic Twilight Obsidian Surfaces */
+  --surface-950: 8 5 18;
+  --surface-900: 15 10 32;
+  --surface-850: 24 16 48;
+  --surface-800: 34 22 66;
+  --surface-750: 48 30 90;
+  --surface-700: 64 42 118;
+  --surface-600: 92 62 162;
+  --surface-500: 128 92 208;
+
+  --map-line: 244 63 94;
+  --color-bg-base: #080512;
+  --color-bg-track: #05030c;
+  --color-bg-thumb: #3e1236;
+  color-scheme: dark;
+}
+
+html[data-color-theme='6'] ::selection {
+  background: rgba(244, 63, 94, 0.4);
+  color: #ffffff;
+}
+
+html[data-color-theme='6'] .text-gradient-shimmer {
+  background: linear-gradient(90deg, #a78bfa 0%, #fb7185 28%, #ffffff 50%, #fbbf24 75%, #a78bfa 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 6s ease infinite;
+}
+
+/* Secondary & Tertiary styling on Theme 6 */
+html[data-color-theme='6'] .hero-photo-badge {
+  border-color: rgba(244, 63, 94, 0.45);
+  box-shadow: 0 0 25px -5px rgba(244, 63, 94, 0.35);
+}
+
+/* Dispatched stat card in Theme 6: Hot Sunset Coral glow */
+html[data-color-theme='6'] [class*='border-blue-500'] {
+  border-color: rgba(244, 63, 94, 0.4);
+}
+html[data-color-theme='6'] [class*='text-blue-400'] {
+  color: rgb(251 113 133);
+}
+html[data-color-theme='6'] [class*='bg-blue-500/15'] {
+  background-color: rgba(244, 63, 94, 0.15);
+}
+
+/* Amber/Solar card & Fee tag in Theme 6: Radiant Sunrise Gold */
+html[data-color-theme='6'] [class*='border-amber-500'] {
+  border-color: rgba(251, 191, 36, 0.4);
+}
+html[data-color-theme='6'] [class*='text-amber-400'],
+html[data-color-theme='6'] [class*='text-amber-300'] {
+  color: rgb(251 191 36);
+}
+html[data-color-theme='6'] [class*='bg-amber-500/15'] {
+  background-color: rgba(251, 191, 36, 0.18);
+}
+html[data-color-theme='6'] .parcel-tracking-code {
+  color: rgb(251 113 133);
+}
+html[data-color-theme='6'] .parcel-fee-amount {
+  color: rgb(251 191 36);
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
+}
+html[data-color-theme='6'] .route-progress-line {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.3) 0%, rgba(244, 63, 94, 0.5) 50%, rgba(251, 191, 36, 0.6) 100%);
+}
+html[data-color-theme='6'] .route-truck-ping {
+  background-color: rgb(251 191 36);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.85);
+}
+
+/* ========================================================================= */
+/* Theme 7: Riviera Neobank / Mediterranean Luxe (Light Mode - 3 Colors)     */
+/* Tri-color palette: Royal Ultramarine (#4338ca), Vibrant Tangerine (#ea580c),*/
+/* Electric Jade (#059669) on Pure Snow & Ice-Slate porcelain surfaces.     */
+/* ========================================================================= */
+html[data-color-theme='7'] {
+  /* Color 1 (Primary / Trust & Structure): Royal Ultramarine */
+  --brand-50: 238 242 255;
+  --brand-100: 224 231 255;
+  --brand-200: 199 210 254;
+  --brand-300: 165 180 252;
+  --brand-400: 79 70 229;
+  --brand-500: 67 56 202;
+  --brand-600: 55 48 163;
+  --brand-700: 49 46 129;
+  --brand-800: 38 35 102;
+  --brand-900: 30 27 75;
+  --brand-950: 18 16 48;
+
+  /* Color 2 (Secondary / High Energy): Vibrant Tangerine Coral */
+  --accent-tangerine: 234 88 12;
+  --accent-tangerine-light: 249 115 22;
+
+  /* Color 3 (Tertiary / Verified Telemetry): Electric Jade Emerald */
+  --accent-jade: 5 150 105;
+  --accent-jade-light: 16 185 129;
+
+  /* Pure Snow & Ice-Slate Porcelain Surfaces */
+  --surface-950: 248 250 252;
+  --surface-900: 255 255 255;
+  --surface-850: 241 245 249;
+  --surface-800: 226 232 240;
+  --surface-750: 203 213 225;
+  --surface-700: 148 163 184;
+  --surface-600: 100 116 139;
+  --surface-500: 71 85 105;
+
+  --map-line: 234 88 12;
+  --color-bg-base: #f8fafc;
+  --color-bg-track: #e2e8f0;
+  --color-bg-thumb: #94a3b8;
+  color-scheme: light;
+}
+
+html[data-color-theme='7'] ::selection {
+  background: rgba(234, 88, 12, 0.25);
+  color: #0f172a;
+}
+
+html[data-color-theme='7'] .text-gradient-shimmer {
+  background: linear-gradient(90deg, #4338ca 0%, #ea580c 32%, #059669 68%, #4338ca 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 6s ease infinite;
+}
+
+html[data-color-theme='7'] .hero-photo-badge {
+  border-color: rgba(67, 56, 202, 0.35);
+  box-shadow: 0 4px 20px -4px rgba(67, 56, 202, 0.2);
+}
+
+/* In-transit / Dispatched stat card in Theme 7: Tangerine Coral */
+html[data-color-theme='7'] [class*='border-blue-500'] {
+  border-color: rgba(234, 88, 12, 0.4);
+}
+html[data-color-theme='7'] [class*='text-blue-400'] {
+  color: rgb(234 88 12);
+}
+html[data-color-theme='7'] [class*='bg-blue-500/15'] {
+  background-color: rgba(234, 88, 12, 0.12);
+}
+
+/* Delivered stat card in Theme 7: Electric Jade */
+html[data-color-theme='7'] [class*='border-emerald-500'] {
+  border-color: rgba(5, 150, 105, 0.4);
+}
+html[data-color-theme='7'] [class*='text-emerald-400'] {
+  color: rgb(5 150 105);
+}
+html[data-color-theme='7'] [class*='bg-emerald-500/15'] {
+  background-color: rgba(5, 150, 105, 0.12);
+}
+
+html[data-color-theme='7'] .parcel-tracking-code {
+  color: rgb(67 56 202);
+}
+html[data-color-theme='7'] .parcel-fee-amount {
+  color: rgb(234 88 12);
+  font-weight: 800;
+}
+html[data-color-theme='7'] .route-progress-line {
+  background: linear-gradient(90deg, rgba(67, 56, 202, 0.4) 0%, rgba(234, 88, 12, 0.6) 50%, rgba(5, 150, 105, 0.7) 100%);
+}
+html[data-color-theme='7'] .route-truck-ping {
+  background-color: rgb(234 88 12);
+  box-shadow: 0 0 14px rgba(234, 88, 12, 0.7);
+}
+
+/* ========================================================================= */
+/* Theme 8: Sahara Mirage / Oasis Flame (Dark Mode - 3 Colors)                */
+/* Tri-color palette: Flame Terracotta (#ea580c), Warm Sahara Gold (#fbbf24),  */
+/* Oasis Turquoise (#14b8a6) on Deep Basalt Obsidian surfaces.              */
+/* ========================================================================= */
+html[data-color-theme='8'] {
+  /* Color 1 (Primary / Dune Fire): Flame Terracotta */
+  --brand-50: 255 247 237;
+  --brand-100: 255 237 213;
+  --brand-200: 254 215 170;
+  --brand-300: 253 186 116;
+  --brand-400: 251 146 60;
+  --brand-500: 234 88 12;
+  --brand-600: 194 65 12;
+  --brand-700: 154 52 18;
+  --brand-800: 124 45 18;
+  --brand-900: 103 39 18;
+  --brand-950: 67 20 7;
+
+  /* Color 2 (Secondary / Sand Wealth): Sahara Sun Gold */
+  --accent-gold: 251 191 36;
+  --accent-gold-light: 253 224 71;
+
+  /* Color 3 (Tertiary / Oasis Telemetry): Oasis Turquoise */
+  --accent-oasis: 20 184 166;
+  --accent-oasis-light: 45 212 191;
+
+  /* Deep Basalt Obsidian Surfaces */
+  --surface-950: 12 9 6;
+  --surface-900: 20 15 10;
+  --surface-850: 30 22 15;
+  --surface-800: 44 32 22;
+  --surface-750: 62 45 32;
+  --surface-700: 84 62 44;
+  --surface-600: 118 88 64;
+  --surface-500: 160 122 92;
+
+  --map-line: 20 184 166;
+  --color-bg-base: #0c0906;
+  --color-bg-track: #070503;
+  --color-bg-thumb: #3a2212;
+  color-scheme: dark;
+}
+
+html[data-color-theme='8'] ::selection {
+  background: rgba(234, 88, 12, 0.4);
+  color: #ffffff;
+}
+
+html[data-color-theme='8'] .text-gradient-shimmer {
+  background: linear-gradient(90deg, #fb923c 0%, #fbbf24 30%, #ffffff 50%, #2dd4bf 75%, #fb923c 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 6s ease infinite;
+}
+
+html[data-color-theme='8'] .hero-photo-badge {
+  border-color: rgba(234, 88, 12, 0.45);
+  box-shadow: 0 0 25px -5px rgba(234, 88, 12, 0.35);
+}
+
+/* Dispatched stat card in Theme 8: Oasis Turquoise */
+html[data-color-theme='8'] [class*='border-blue-500'] {
+  border-color: rgba(20, 184, 166, 0.4);
+}
+html[data-color-theme='8'] [class*='text-blue-400'] {
+  color: rgb(45 212 191);
+}
+html[data-color-theme='8'] [class*='bg-blue-500/15'] {
+  background-color: rgba(20, 184, 166, 0.15);
+}
+
+/* Fee & Sahara Gold highlights */
+html[data-color-theme='8'] [class*='border-amber-500'] {
+  border-color: rgba(251, 191, 36, 0.4);
+}
+html[data-color-theme='8'] [class*='text-amber-400'],
+html[data-color-theme='8'] [class*='text-amber-300'] {
+  color: rgb(251 191 36);
+}
+html[data-color-theme='8'] [class*='bg-amber-500/15'] {
+  background-color: rgba(251, 191, 36, 0.18);
+}
+html[data-color-theme='8'] .parcel-tracking-code {
+  color: rgb(45 212 191);
+}
+html[data-color-theme='8'] .parcel-fee-amount {
+  color: rgb(251 191 36);
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
+}
+html[data-color-theme='8'] .route-progress-line {
+  background: linear-gradient(90deg, rgba(234, 88, 12, 0.35) 0%, rgba(251, 191, 36, 0.5) 50%, rgba(20, 184, 166, 0.65) 100%);
+}
+html[data-color-theme='8'] .route-truck-ping {
+  background-color: rgb(45 212 191);
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.85);
+}
+
+/* ========================================================================= */
+/* Theme 9: Acid Voltage / Cyberpunk Matrix (Dark Mode - 3 Colors)            */
+/* Tri-color palette: Toxic Acid Lime (#84cc16), Electric Indigo (#6366f1),   */
+/* Hot Neon Fuchsia (#ec4899) on Pitch OLED Black surfaces.                  */
+/* ========================================================================= */
+html[data-color-theme='9'] {
+  /* Color 1 (Primary / Voltage): Toxic Acid Lime */
+  --brand-50: 247 254 231;
+  --brand-100: 236 252 203;
+  --brand-200: 217 249 157;
+  --brand-300: 190 242 100;
+  --brand-400: 163 230 53;
+  --brand-500: 132 204 22;
+  --brand-600: 101 163 13;
+  --brand-700: 77 124 15;
+  --brand-800: 63 98 18;
+  --brand-900: 54 83 20;
+  --brand-950: 26 46 5;
+
+  /* Color 2 (Secondary / Cyber Circuit): Electric Indigo */
+  --accent-indigo: 99 102 241;
+  --accent-indigo-light: 129 140 248;
+
+  /* Color 3 (Tertiary / Neon Flare): Hot Neon Fuchsia */
+  --accent-fuchsia: 236 72 153;
+  --accent-fuchsia-light: 244 114 182;
+
+  /* Pure Pitch OLED Black Surfaces */
+  --surface-950: 2 2 4;
+  --surface-900: 6 7 11;
+  --surface-850: 12 13 20;
+  --surface-800: 19 21 32;
+  --surface-750: 28 31 46;
+  --surface-700: 40 44 66;
+  --surface-600: 60 66 98;
+  --surface-500: 88 96 140;
+
+  --map-line: 99 102 241;
+  --color-bg-base: #020204;
+  --color-bg-track: #000000;
+  --color-bg-thumb: #1e2238;
+  color-scheme: dark;
+}
+
+html[data-color-theme='9'] ::selection {
+  background: rgba(163, 230, 53, 0.4);
+  color: #000000;
+}
+
+html[data-color-theme='9'] .text-gradient-shimmer {
+  background: linear-gradient(90deg, #a3e635 0%, #818cf8 28%, #ffffff 50%, #f472b6 75%, #a3e635 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 6s ease infinite;
+}
+
+html[data-color-theme='9'] .hero-photo-badge {
+  border-color: rgba(163, 230, 53, 0.45);
+  box-shadow: 0 0 25px -5px rgba(163, 230, 53, 0.35);
+}
+
+/* Dispatched stat card in Theme 9: Electric Indigo */
+html[data-color-theme='9'] [class*='border-blue-500'] {
+  border-color: rgba(99, 102, 241, 0.4);
+}
+html[data-color-theme='9'] [class*='text-blue-400'] {
+  color: rgb(129 140 248);
+}
+html[data-color-theme='9'] [class*='bg-blue-500/15'] {
+  background-color: rgba(99, 102, 241, 0.15);
+}
+
+/* Fee & Hot Fuchsia highlights in Theme 9 */
+html[data-color-theme='9'] [class*='border-amber-500'] {
+  border-color: rgba(236, 72, 153, 0.4);
+}
+html[data-color-theme='9'] [class*='text-amber-400'],
+html[data-color-theme='9'] [class*='text-amber-300'] {
+  color: rgb(244 114 182);
+}
+html[data-color-theme='9'] [class*='bg-amber-500/15'] {
+  background-color: rgba(236, 72, 153, 0.18);
+}
+html[data-color-theme='9'] .parcel-tracking-code {
+  color: rgb(163 230 53);
+}
+html[data-color-theme='9'] .parcel-fee-amount {
+  color: rgb(244 114 182);
+  text-shadow: 0 0 14px rgba(244, 114, 182, 0.4);
+}
+html[data-color-theme='9'] .route-progress-line {
+  background: linear-gradient(90deg, rgba(132, 204, 22, 0.35) 0%, rgba(99, 102, 241, 0.5) 50%, rgba(236, 72, 153, 0.65) 100%);
+}
+html[data-color-theme='9'] .route-truck-ping {
+  background-color: rgb(244 114 182);
+  box-shadow: 0 0 14px rgba(244, 114, 182, 0.85);
+}
+
+/* Dark text and neutral borders for the light palettes (Themes 3, 4, and 7). */
+html[data-color-theme='3'],
+html[data-color-theme='4'],
+html[data-color-theme='7'] {
+  --light-theme-text: #17202d;
+  --light-theme-muted: #586574;
+  --light-theme-border: rgb(23 32 45 / 0.12);
+}
+
+html[data-color-theme='3'] [class~='text-white'],
+html[data-color-theme='4'] [class~='text-white'],
+html[data-color-theme='7'] [class~='text-white'] {
+  color: var(--light-theme-text);
+}
+
+html[data-color-theme='3'] [class~='bg-brand-500'][class~='text-white'],
+html[data-color-theme='4'] [class~='bg-brand-500'][class~='text-white'],
+html[data-color-theme='7'] [class~='bg-brand-500'][class~='text-white'],
+html[data-color-theme='3'] [class~='bg-brand-600'][class~='text-white'],
+html[data-color-theme='4'] [class~='bg-brand-600'][class~='text-white'],
+html[data-color-theme='7'] [class~='bg-brand-600'][class~='text-white'],
+html[data-color-theme='3'] [class~='bg-brand-700'][class~='text-white'],
+html[data-color-theme='4'] [class~='bg-brand-700'][class~='text-white'],
+html[data-color-theme='7'] [class~='bg-brand-700'][class~='text-white'] {
+  color: #ffffff;
+}
+
+html[data-color-theme='3'] [class~='text-slate-100'],
+html[data-color-theme='4'] [class~='text-slate-100'],
+html[data-color-theme='7'] [class~='text-slate-100'],
+html[data-color-theme='3'] [class~='text-slate-200'],
+html[data-color-theme='4'] [class~='text-slate-200'],
+html[data-color-theme='7'] [class~='text-slate-200'] {
+  color: #273444;
+}
+
+html[data-color-theme='3'] [class~='text-slate-300'],
+html[data-color-theme='4'] [class~='text-slate-300'],
+html[data-color-theme='7'] [class~='text-slate-300'],
+html[data-color-theme='3'] [class~='text-slate-400'],
+html[data-color-theme='4'] [class~='text-slate-400'],
+html[data-color-theme='7'] [class~='text-slate-400'],
+html[data-color-theme='3'] [class~='text-slate-500'],
+html[data-color-theme='4'] [class~='text-slate-500'],
+html[data-color-theme='7'] [class~='text-slate-500'] {
+  color: var(--light-theme-muted);
+}
+
+html[data-color-theme='3'] [class~='text-brand-300'],
+html[data-color-theme='4'] [class~='text-brand-300'],
+html[data-color-theme='7'] [class~='text-brand-300'] {
+  color: rgb(var(--brand-600));
+}
+
+html[data-color-theme='3'] [class~='text-dark-950'],
+html[data-color-theme='4'] [class~='text-dark-950'],
+html[data-color-theme='7'] [class~='text-dark-950'] {
+  color: #111827;
+}
+
+html[data-color-theme='3'] [class*='border-white/'],
+html[data-color-theme='4'] [class*='border-white/'],
+html[data-color-theme='7'] [class*='border-white/'] {
+  border-color: var(--light-theme-border);
+}
+
+html[data-color-theme='3'] [class~='bg-black/40'],
+html[data-color-theme='4'] [class~='bg-black/40'],
+html[data-color-theme='7'] [class~='bg-black/40'],
+html[data-color-theme='3'] [class~='bg-black/30'],
+html[data-color-theme='4'] [class~='bg-black/30'],
+html[data-color-theme='7'] [class~='bg-black/30'] {
+  background-color: rgb(23 32 45 / 0.035);
+}
+
+/* Keep text over the dark photo vignette legible in light palette previews. */
+html[data-color-theme='3'] .hero-photo-badge,
+html[data-color-theme='4'] .hero-photo-badge,
+html[data-color-theme='7'] .hero-photo-badge {
+  background-color: rgb(5 7 10 / 0.84);
+  border-color: rgb(255 255 255 / 0.2);
+}
+
+html[data-color-theme='3'] .hero-photo-overlay [class~='text-white'],
+html[data-color-theme='4'] .hero-photo-overlay [class~='text-white'],
+html[data-color-theme='7'] .hero-photo-overlay [class~='text-white'],
+html[data-color-theme='3'] .hero-photo-overlay [class~='text-slate-300'],
+html[data-color-theme='4'] .hero-photo-overlay [class~='text-slate-300'],
+html[data-color-theme='7'] .hero-photo-overlay [class~='text-slate-300'] {
+  color: #ffffff;
 }
 
 html {
@@ -28,7 +722,7 @@ body {
 }
 
 ::selection {
-  background: rgba(212, 184, 124, 0.35);
+  background: rgb(var(--brand-400) / 0.35);
   color: #ffffff;
 }
 
@@ -86,7 +780,7 @@ body {
 }
 
 .text-gradient-shimmer {
-  background: linear-gradient(90deg, #d4b87c 0%, #fef5e0 25%, #ffffff 50%, #e8d09e 75%, #d4b87c 100%);
+  background: linear-gradient(90deg, rgb(var(--brand-400)) 0%, rgb(var(--brand-100)) 25%, #ffffff 50%, rgb(var(--brand-200)) 75%, rgb(var(--brand-400)) 100%);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
@@ -96,13 +790,13 @@ body {
 
 @keyframes ping-glow {
   0% {
-    box-shadow: 0 0 0 0 rgba(212, 184, 124, 0.6);
+    box-shadow: 0 0 0 0 rgb(var(--brand-400) / 0.6);
   }
   70% {
-    box-shadow: 0 0 0 16px rgba(212, 184, 124, 0);
+    box-shadow: 0 0 0 16px rgb(var(--brand-400) / 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(212, 184, 124, 0);
+    box-shadow: 0 0 0 0 rgb(var(--brand-400) / 0);
   }
 }
 

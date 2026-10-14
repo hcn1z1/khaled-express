@@ -39,22 +39,22 @@ export default function HeroMapBackground() {
 
           {/* Faint gold highway gradient */}
           <linearGradient id="gold-artery" x1="10%" y1="70%" x2="90%" y2="25%">
-            <stop offset="0%" stopColor="#d4b87c" stopOpacity="0.25" />
-            <stop offset="35%" stopColor="#d4b87c" stopOpacity="0.8" />
-            <stop offset="70%" stopColor="#dec693" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="#d4b87c" stopOpacity="0.3" />
+            <stop offset="0%" stopColor="rgb(var(--brand-400))" stopOpacity="0.25" />
+            <stop offset="35%" stopColor="rgb(var(--brand-400))" stopOpacity="0.8" />
+            <stop offset="70%" stopColor="rgb(var(--brand-300))" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="rgb(var(--brand-400))" stopOpacity="0.3" />
           </linearGradient>
 
           {/* Secondary artery gradient */}
           <linearGradient id="gold-feeder" x1="30%" y1="30%" x2="80%" y2="80%">
-            <stop offset="0%" stopColor="#dec693" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#d4b87c" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="rgb(var(--brand-300))" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="rgb(var(--brand-400))" stopOpacity="0.15" />
           </linearGradient>
 
           {/* Pattern of city grid blocks */}
           <pattern id="street-grid-dense" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(-18 0 0)">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="0.8" />
-            <path d="M 30 0 L 30 60 M 0 30 L 60 30" fill="none" stroke="rgba(255,255,255,0.025)" strokeWidth="0.5" />
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgb(var(--map-line) / 0.04)" strokeWidth="0.8" />
+            <path d="M 30 0 L 30 60 M 0 30 L 60 30" fill="none" stroke="rgb(var(--map-line) / 0.025)" strokeWidth="0.5" />
           </pattern>
         </defs>
 
@@ -67,16 +67,16 @@ export default function HeroMapBackground() {
         <rect x="180" y="420" width="320" height="300" fill="url(#street-grid-dense)" opacity="0.5" />
 
         {/* Faint district boundary outlines */}
-        <path d="M 280 180 L 420 160 L 510 240 L 460 340 L 320 320 Z" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="rgba(255,255,255,0.015)" />
-        <path d="M 540 220 L 680 190 L 740 270 L 660 360 L 530 310 Z" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="rgba(255,255,255,0.012)" />
-        <path d="M 640 380 L 820 350 L 910 460 L 790 540 L 630 480 Z" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="rgba(255,255,255,0.018)" />
-        <path d="M 360 460 L 500 420 L 580 520 L 470 630 L 330 570 Z" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="rgba(255,255,255,0.01)" />
-        <path d="M 720 560 L 880 520 L 980 620 L 860 740 L 690 680 Z" stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="rgba(255,255,255,0.012)" />
+        <path d="M 280 180 L 420 160 L 510 240 L 460 340 L 320 320 Z" stroke="rgb(var(--map-line) / 0.06)" strokeWidth="1" fill="rgb(var(--map-line) / 0.015)" />
+        <path d="M 540 220 L 680 190 L 740 270 L 660 360 L 530 310 Z" stroke="rgb(var(--map-line) / 0.06)" strokeWidth="1" fill="rgb(var(--map-line) / 0.012)" />
+        <path d="M 640 380 L 820 350 L 910 460 L 790 540 L 630 480 Z" stroke="rgb(var(--map-line) / 0.06)" strokeWidth="1" fill="rgb(var(--map-line) / 0.018)" />
+        <path d="M 360 460 L 500 420 L 580 520 L 470 630 L 330 570 Z" stroke="rgb(var(--map-line) / 0.05)" strokeWidth="1" fill="rgb(var(--map-line) / 0.01)" />
+        <path d="M 720 560 L 880 520 L 980 620 L 860 740 L 690 680 Z" stroke="rgb(var(--map-line) / 0.05)" strokeWidth="1" fill="rgb(var(--map-line) / 0.012)" />
 
         {/* ========================================================= */}
         {/* 2. LOCAL & RESIDENTIAL STREET NETWORK (Faint Gray/Slate)  */}
         {/* ========================================================= */}
-        <g stroke="rgba(255,255,255,0.09)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+        <g stroke="rgb(var(--map-line) / 0.09)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
           {/* Angled street grid lines across northern corridor */}
           <path d="M 120 160 L 540 260" />
           <path d="M 160 120 L 580 220" />
@@ -120,7 +120,7 @@ export default function HeroMapBackground() {
         {/* ========================================================= */}
         {/* 3. SECONDARY ARTERIAL BOULEVARDS (Slate-300 / Medium)     */}
         {/* ========================================================= */}
-        <g stroke="rgba(255,255,255,0.18)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <g stroke="rgb(var(--map-line) / 0.18)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
           {/* North-South cross boulevard */}
           <path d="M 380 40 Q 420 280 340 520 T 420 820" />
 
@@ -139,7 +139,7 @@ export default function HeroMapBackground() {
         </g>
 
         {/* Roundabouts and Intersections */}
-        <g stroke="rgba(255,255,255,0.22)" strokeWidth="1.6" fill="none">
+        <g stroke="rgb(var(--map-line) / 0.22)" strokeWidth="1.6" fill="none">
           <circle cx="410" cy="270" r="14" />
           <circle cx="620" cy="280" r="18" />
           <circle cx="780" cy="220" r="15" />
@@ -148,16 +148,16 @@ export default function HeroMapBackground() {
           <circle cx="860" cy="420" r="14" />
 
           {/* Roundabout center pins */}
-          <circle cx="410" cy="270" r="2.5" fill="rgba(255,255,255,0.4)" stroke="none" />
-          <circle cx="620" cy="280" r="3" fill="#dec693" stroke="none" />
-          <circle cx="780" cy="220" r="2.5" fill="rgba(255,255,255,0.4)" stroke="none" />
-          <circle cx="480" cy="500" r="2.5" fill="rgba(255,255,255,0.4)" stroke="none" />
-          <circle cx="740" cy="560" r="3" fill="#dec693" stroke="none" />
-          <circle cx="860" cy="420" r="2.5" fill="rgba(255,255,255,0.4)" stroke="none" />
+          <circle cx="410" cy="270" r="2.5" fill="rgb(var(--map-line) / 0.4)" stroke="none" />
+          <circle cx="620" cy="280" r="3" fill="rgb(var(--brand-300))" stroke="none" />
+          <circle cx="780" cy="220" r="2.5" fill="rgb(var(--map-line) / 0.4)" stroke="none" />
+          <circle cx="480" cy="500" r="2.5" fill="rgb(var(--map-line) / 0.4)" stroke="none" />
+          <circle cx="740" cy="560" r="3" fill="rgb(var(--brand-300))" stroke="none" />
+          <circle cx="860" cy="420" r="2.5" fill="rgb(var(--map-line) / 0.4)" stroke="none" />
         </g>
 
         {/* Cloverleaf Highway Interchange Loops */}
-        <g stroke="rgba(212,184,124,0.3)" strokeWidth="1.4" fill="none">
+        <g stroke="rgb(var(--brand-400) / 0.3)" strokeWidth="1.4" fill="none">
           {/* Cloverleaf loop upper left of interchange */}
           <path d="M 490 320 C 470 290 440 310 460 340 C 475 360 510 350 510 325" />
           {/* Cloverleaf loop lower right of interchange */}
@@ -171,7 +171,7 @@ export default function HeroMapBackground() {
         {/* Glow halo underlay */}
         <path
           d="M 60 520 Q 280 440 510 330 T 920 180 L 1080 140"
-          stroke="#d4b87c"
+          stroke="rgb(var(--brand-400))"
           strokeWidth="8"
           strokeLinecap="round"
           opacity="0.18"
@@ -191,7 +191,7 @@ export default function HeroMapBackground() {
         {/* Parallel expressway lane / feeder */}
         <path
           d="M 75 532 Q 290 452 518 342 T 928 192 L 1088 152"
-          stroke="rgba(212, 184, 124, 0.35)"
+          stroke="rgb(var(--brand-400) / 0.35)"
           strokeWidth="1.2"
           strokeDasharray="6 8"
           strokeLinecap="round"
@@ -209,33 +209,33 @@ export default function HeroMapBackground() {
         {/* Secondary branch lane marking */}
         <path
           d="M 518 340 Q 646 418 786 518 T 1056 648"
-          stroke="rgba(212, 184, 124, 0.25)"
+          stroke="rgb(var(--brand-400) / 0.25)"
           strokeWidth="1"
           strokeDasharray="5 6"
           strokeLinecap="round"
         />
 
         {/* Highway entrance / exit slip ramps */}
-        <path d="M 320 460 Q 380 420 440 380" stroke="#d4b87c" strokeWidth="1.6" strokeDasharray="3 4" opacity="0.6" />
-        <path d="M 620 300 Q 690 320 760 360" stroke="#d4b87c" strokeWidth="1.6" strokeDasharray="3 4" opacity="0.6" />
-        <path d="M 720 240 Q 800 230 870 210" stroke="#d4b87c" strokeWidth="1.6" strokeDasharray="3 4" opacity="0.6" />
+        <path d="M 320 460 Q 380 420 440 380" stroke="rgb(var(--brand-400))" strokeWidth="1.6" strokeDasharray="3 4" opacity="0.6" />
+        <path d="M 620 300 Q 690 320 760 360" stroke="rgb(var(--brand-400))" strokeWidth="1.6" strokeDasharray="3 4" opacity="0.6" />
+        <path d="M 720 240 Q 800 230 870 210" stroke="rgb(var(--brand-400))" strokeWidth="1.6" strokeDasharray="3 4" opacity="0.6" />
 
         {/* ========================================================= */}
         {/* 5. TELEMETRY HIGHWAY NODES & MOVING GPS PULSE            */}
         {/* ========================================================= */}
         {/* Highway Waypoint Markers */}
         <g>
-          <circle cx="280" cy="440" r="4" fill="#dec693" />
-          <circle cx="280" cy="440" r="9" stroke="#dec693" strokeWidth="1" opacity="0.4" className="animate-ping" />
+          <circle cx="280" cy="440" r="4" fill="rgb(var(--brand-300))" />
+          <circle cx="280" cy="440" r="9" stroke="rgb(var(--brand-300))" strokeWidth="1" opacity="0.4" className="animate-ping" />
 
-          <circle cx="510" cy="330" r="5" fill="#dec693" />
-          <circle cx="510" cy="330" r="12" stroke="#dec693" strokeWidth="1" opacity="0.5" />
+          <circle cx="510" cy="330" r="5" fill="rgb(var(--brand-300))" />
+          <circle cx="510" cy="330" r="12" stroke="rgb(var(--brand-300))" strokeWidth="1" opacity="0.5" />
 
-          <circle cx="780" cy="510" r="4" fill="#dec693" />
-          <circle cx="780" cy="510" r="9" stroke="#dec693" strokeWidth="1" opacity="0.4" />
+          <circle cx="780" cy="510" r="4" fill="rgb(var(--brand-300))" />
+          <circle cx="780" cy="510" r="9" stroke="rgb(var(--brand-300))" strokeWidth="1" opacity="0.4" />
 
-          <circle cx="920" cy="180" r="4.5" fill="#dec693" />
-          <circle cx="920" cy="180" r="10" stroke="#dec693" strokeWidth="1" opacity="0.5" />
+          <circle cx="920" cy="180" r="4.5" fill="rgb(var(--brand-300))" />
+          <circle cx="920" cy="180" r="10" stroke="rgb(var(--brand-300))" strokeWidth="1" opacity="0.5" />
         </g>
 
         {/* Live Traveling Express Pulse traveling along Autoroute A2 */}
@@ -246,7 +246,7 @@ export default function HeroMapBackground() {
             repeatCount="indefinite"
           />
         </circle>
-        <circle r="9" fill="none" stroke="#dec693" strokeWidth="1" opacity="0.75">
+        <circle r="9" fill="none" stroke="rgb(var(--brand-300))" strokeWidth="1" opacity="0.75">
           <animateMotion
             path="M 60 520 Q 280 440 510 330 T 920 180 L 1080 140"
             dur="6s"

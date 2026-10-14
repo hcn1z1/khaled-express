@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import LiveShuttleTicker from '@/components/LiveShuttleTicker';
@@ -8,12 +8,25 @@ import AuthModal from '@/components/AuthModal';
 import NewTransferModal from '@/components/NewTransferModal';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import BrandLogo from '@/components/BrandLogo';
+import ThemePreviewSwitcher from '@/components/ThemePreviewSwitcher';
 import { translations } from '@/lib/i18n';
 import { useSite } from '@/lib/site-context';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const { lang } = useSite();
   const t = translations[lang];
+
+  useEffect(() => {
+    const applyColorTheme = () => {
+      const requestedTheme = new URLSearchParams(window.location.search).get('color');
+      const theme = requestedTheme && ['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(requestedTheme) ? requestedTheme : '1';
+      document.documentElement.dataset.colorTheme = theme;
+    };
+
+    applyColorTheme();
+    window.addEventListener('popstate', applyColorTheme);
+    return () => window.removeEventListener('popstate', applyColorTheme);
+  }, []);
 
   return (
     <div className="min-h-screen bg-dark-950 text-slate-100 flex flex-col">
@@ -69,6 +82,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* Global modals, driven by SiteProvider */}
       <AuthModal />
       <NewTransferModal />
+
+      {/* Floating Theme Switcher for ?color=1..6 */}
+      <ThemePreviewSwitcher />
     </div>
   );
 }

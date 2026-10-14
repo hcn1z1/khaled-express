@@ -112,8 +112,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`dark ${inter.variable} ${tajawal.variable}`}>
+    <html lang="fr" data-color-theme="1" className={`dark ${inter.variable} ${tajawal.variable}`}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(() => { const theme = new URLSearchParams(window.location.search).get('color'); if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(theme)) document.documentElement.dataset.colorTheme = theme; })();",
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
