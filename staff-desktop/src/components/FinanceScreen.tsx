@@ -146,7 +146,7 @@ function FinanceAdmin({ lang, parcels }: { lang: Language; parcels: Parcel[] }) 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-black text-white flex items-center gap-2">
-            <DollarSign className="w-6 h-6 text-brand-500" />
+            <DollarSign className="w-6 h-6 text-brand-400" />
             {t.finance_title}
           </h2>
           <p className="text-xs text-gray-400 mt-1">
@@ -171,9 +171,9 @@ function FinanceAdmin({ lang, parcels }: { lang: Language; parcels: Parcel[] }) 
           </button>
           <button
             onClick={() => setIsExpenseModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-brand-600/30 transition-all active:scale-95"
+            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-dark-950 rounded-xl text-xs font-black shadow-glow-brand transition-all active:scale-95"
           >
-            <PlusCircle className="w-4 h-4" />
+            <PlusCircle className="w-4 h-4 text-dark-950" />
             <span>+ Dépense</span>
           </button>
         </div>
@@ -263,7 +263,7 @@ function FinanceAdmin({ lang, parcels }: { lang: Language; parcels: Parcel[] }) 
             onClick={() => setActiveTab('expenses')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               activeTab === 'expenses'
-                ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/30'
+                ? 'bg-brand-400 text-dark-950 font-black shadow-card'
                 : 'text-gray-400 hover:text-white hover:bg-dark-800'
             }`}
           >
@@ -548,7 +548,7 @@ function FinanceAdmin({ lang, parcels }: { lang: Language; parcels: Parcel[] }) 
                 <button
                   type="submit"
                   disabled={actionLoading}
-                  className="flex-1 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold shadow-lg"
+                  className="flex-1 py-2.5 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-dark-950 rounded-xl text-xs font-black shadow-glow-brand"
                 >
                   {actionLoading ? 'Enregistrement...' : 'Valider'}
                 </button>

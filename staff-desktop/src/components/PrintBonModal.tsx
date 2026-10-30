@@ -41,7 +41,7 @@ export default function PrintBonModal({
               <button
                 onClick={() => setDocType('ticket')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors ${
-                  docType === 'ticket' ? 'bg-brand-600 text-white shadow' : 'text-gray-400 hover:text-white'
+                  docType === 'ticket' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 <Tag className="w-3.5 h-3.5" />
@@ -50,7 +50,7 @@ export default function PrintBonModal({
               <button
                 onClick={() => setDocType('intake')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors ${
-                  docType === 'intake' ? 'bg-brand-600 text-white shadow' : 'text-gray-400 hover:text-white'
+                  docType === 'intake' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 <FileText className="w-3.5 h-3.5" />
@@ -59,7 +59,7 @@ export default function PrintBonModal({
               <button
                 onClick={() => setDocType('pickup')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors ${
-                  docType === 'pickup' ? 'bg-brand-600 text-white shadow' : 'text-gray-400 hover:text-white'
+                  docType === 'pickup' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 <CheckSquare className="w-3.5 h-3.5" />
@@ -79,9 +79,9 @@ export default function PrintBonModal({
 
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-lg shadow-brand-600/30 transition-all active:scale-95"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-dark-950 text-xs font-black shadow-glow-brand transition-all active:scale-95"
             >
-              <Printer className="w-4 h-4" />
+              <Printer className="w-4 h-4 text-dark-950" />
               <span>Imprimer</span>
             </button>
 

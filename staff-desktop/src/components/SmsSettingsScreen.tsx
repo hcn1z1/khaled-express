@@ -625,7 +625,7 @@ export default function SmsSettingsScreen({ lang, currentUser }: SmsSettingsScre
                       type="button"
                       onClick={() => setPreviewLang('fr')}
                       className={`px-2.5 py-1 rounded-lg transition-all ${
-                        previewLang === 'fr' ? 'bg-brand-600 text-white shadow-sm' : 'text-slate-400'
+                        previewLang === 'fr' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       FR
@@ -634,7 +634,7 @@ export default function SmsSettingsScreen({ lang, currentUser }: SmsSettingsScre
                       type="button"
                       onClick={() => setPreviewLang('ar')}
                       className={`px-2.5 py-1 rounded-lg transition-all ${
-                        previewLang === 'ar' ? 'bg-brand-600 text-white shadow-sm' : 'text-slate-400'
+                        previewLang === 'ar' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-slate-400 hover:text-white'
                       }`}
                     >
                       AR

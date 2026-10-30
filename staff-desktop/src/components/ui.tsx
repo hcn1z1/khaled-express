@@ -13,11 +13,11 @@ type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
 const BUTTON_VARIANTS: Record<ButtonVariant, string> = {
   primary:
-    'bg-brand-600 hover:bg-brand-500 text-white shadow-glow-brand border border-brand-500/30',
+    'bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-dark-950 font-black shadow-glow-brand border border-brand-400/40',
   secondary:
     'bg-dark-800 hover:bg-dark-750 text-white border border-dark-700 hover:border-dark-600',
   outline:
-    'bg-transparent hover:bg-dark-800 text-slate-200 border border-dark-700 hover:border-slate-500',
+    'bg-transparent hover:bg-dark-800 text-slate-200 border border-dark-700 hover:border-brand-500/40',
   ghost:
     'bg-transparent hover:bg-dark-850 text-slate-300 hover:text-white',
   danger:

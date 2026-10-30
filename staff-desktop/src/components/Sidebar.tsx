@@ -56,19 +56,21 @@ export default function Sidebar({
                 onClick={() => setCurrentTab(item.id)}
                 className={`w-full group flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold transition-all relative ${
                   active
-                    ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-glow-brand'
+                    ? 'bg-gradient-to-r from-brand-500 to-brand-400 text-dark-950 font-black shadow-glow-brand'
                     : 'text-slate-400 hover:text-white hover:bg-dark-850'
                 }`}
               >
                 {!active && (
-                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 rounded-full bg-brand-500 transition-all group-hover:h-5" />
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 rounded-full bg-brand-400 transition-all group-hover:h-5" />
                 )}
                 <div className="flex items-center gap-3">
-                  <Icon className={`w-4 h-4 ${active ? 'text-white' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${active ? 'text-dark-950' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </div>
                 {item.badge && (
-                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-dark-800 text-gray-500 border border-dark-700">
+                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                    active ? 'bg-dark-950/20 text-dark-950 border border-dark-950/30' : 'bg-dark-800 text-gray-500 border border-dark-700'
+                  }`}>
                     {item.badge}
                   </span>
                 )}
@@ -79,7 +81,7 @@ export default function Sidebar({
           {/* AI Assistant Button */}
           <button
             onClick={onOpenAi}
-            className="w-full mt-4 flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-white bg-gradient-to-r from-dark-800 to-dark-750 border border-brand-500/30 hover:border-brand-500/60 shadow-lg transition-all"
+            className="w-full mt-4 flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-white bg-gradient-to-r from-dark-850 to-dark-800 border border-brand-500/30 hover:border-brand-400/60 shadow-card hover:shadow-glow-brand/20 transition-all"
           >
             <Bot className="w-4 h-4 text-brand-400 animate-pulse" />
             <span>{t.nav_ai}</span>
@@ -104,7 +106,7 @@ export default function Sidebar({
         {/* User Card */}
         <div className="p-3 rounded-2xl bg-dark-900 border border-dark-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="w-8 h-8 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center font-bold text-xs shrink-0">
+            <div className="w-8 h-8 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xs shrink-0 border border-brand-500/30">
               {currentUser.full_name ? currentUser.full_name.charAt(0).toUpperCase() : 'U'}
             </div>
             <div className="truncate">

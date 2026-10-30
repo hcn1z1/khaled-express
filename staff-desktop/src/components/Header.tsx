@@ -27,7 +27,7 @@ export default function Header({
       <div className="flex items-center gap-4">
         {/* Office badge */}
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-dark-850 border border-dark-750 text-xs">
-          <MapPin className="w-4 h-4 text-brand-500" />
+          <MapPin className="w-4 h-4 text-brand-400" />
           <span className="font-semibold text-white">
             {currentUser.assigned_office_detail ? (
               lang === 'ar' ? currentUser.assigned_office_detail.name_ar : currentUser.assigned_office_detail.name_fr
@@ -45,9 +45,9 @@ export default function Header({
       <div className="flex items-center gap-3">
         <button
           onClick={onOpenIntake}
-          className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white rounded-xl text-xs font-bold shadow-glow-brand transition-all active:scale-95"
+          className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-dark-950 rounded-xl text-xs font-black shadow-glow-brand transition-all active:scale-95"
         >
-          <PlusCircle className="w-4 h-4" />
+          <PlusCircle className="w-4 h-4 text-dark-950" />
           <span>Nouvel Intake</span>
         </button>
       </div>

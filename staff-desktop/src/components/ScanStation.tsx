@@ -208,7 +208,7 @@ export default function ScanStation({
             onClick={() => setScanType('DISPATCH')}
             className={`p-4 rounded-2xl border text-xs font-bold transition-all text-left flex flex-col justify-between h-24 ${
               scanType === 'DISPATCH'
-                ? 'bg-brand-900/40 border-brand-500 text-white shadow-xl shadow-brand-500/20 ring-2 ring-brand-500/20'
+                ? 'bg-brand-500/20 border-brand-400 text-white shadow-xl shadow-brand-500/20 ring-2 ring-brand-400/20'
                 : 'bg-dark-850 border-dark-700 text-gray-400 hover:border-dark-600 hover:text-white'
             }`}
           >
@@ -252,15 +252,15 @@ export default function ScanStation({
           </button>
         </div>
 
-        {/* Scan Input Gun Box with animated red laser beam */}
+        {/* Scan Input Gun Box with animated gold laser beam */}
         <form onSubmit={handleScanSubmit} className="space-y-4 relative z-10">
           <div className="relative group">
-            {/* Visual Red Laser line animation overlay */}
-            <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-brand-500 to-transparent top-1/2 -translate-y-1/2 opacity-70 pointer-events-none group-focus-within:animate-pulse" />
+            {/* Visual Gold Laser line animation overlay */}
+            <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-brand-400 to-transparent top-1/2 -translate-y-1/2 opacity-75 pointer-events-none group-focus-within:animate-pulse" />
 
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
-                <Scan className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-brand-500" />
+                <Scan className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-brand-400" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -275,7 +275,7 @@ export default function ScanStation({
               <button
                 type="submit"
                 disabled={loading || !trackingInput.trim()}
-                className="px-8 py-4 bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white font-black rounded-2xl shadow-xl shadow-brand-600/30 transition-all text-sm whitespace-nowrap active:scale-95 flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 disabled:opacity-50 text-dark-950 font-black rounded-2xl shadow-glow-brand transition-all text-sm whitespace-nowrap active:scale-95 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <span>Validation...</span>

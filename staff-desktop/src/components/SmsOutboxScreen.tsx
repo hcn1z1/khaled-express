@@ -59,7 +59,7 @@ export default function SmsOutboxScreen({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-dark-800 pb-4">
         <div>
           <h2 className="text-2xl font-black text-white flex items-center gap-2">
-            <MessageSquare className="w-6 h-6 text-brand-500" />
+            <MessageSquare className="w-6 h-6 text-brand-400" />
             {t.sms_title}
           </h2>
           <p className="text-xs text-gray-400 mt-1">
@@ -74,7 +74,7 @@ export default function SmsOutboxScreen({
               onClick={() => setActiveTab('outbox')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'outbox'
-                  ? 'bg-brand-600 text-white shadow-glow-brand'
+                  ? 'bg-brand-400 text-dark-950 font-black shadow-card'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -85,7 +85,7 @@ export default function SmsOutboxScreen({
               onClick={() => setActiveTab('settings')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'settings'
-                  ? 'bg-brand-600 text-white shadow-glow-brand'
+                  ? 'bg-brand-400 text-dark-950 font-black shadow-card'
                   : 'text-slate-400 hover:text-white'
               }`}
             >

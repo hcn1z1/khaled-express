@@ -108,9 +108,9 @@ export default function ParcelList({
 
             <button
               onClick={onOpenIntake}
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-lg shadow-brand-600/30 transition-all active:scale-95"
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-dark-950 text-xs font-black shadow-glow-brand transition-all active:scale-95"
             >
-              <PlusCircle className="w-4 h-4" />
+              <PlusCircle className="w-4 h-4 text-dark-950" />
               <span>Nouveau Colis</span>
             </button>
           </div>
@@ -125,7 +125,7 @@ export default function ParcelList({
               onClick={() => setStatusFilter(tab.key)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
                 statusFilter === tab.key
-                  ? 'bg-brand-600 text-white shadow-md shadow-brand-600/30'
+                  ? 'bg-brand-400 text-dark-950 font-black shadow-card'
                   : 'bg-dark-850 hover:bg-dark-800 text-gray-400 hover:text-white border border-dark-750'
               }`}
             >

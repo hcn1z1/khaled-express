@@ -13,8 +13,8 @@ interface BrandLogoProps {
 
 /**
  * BrandLogo - Khaled Express (Staff Desktop)
- * Crafted using authentic express logistics vectors discovered via better-icons MCP
- * (mdi:truck-fast & iconamoon:delivery-fast-fill aerodynamics).
+ * Styled identically to the landing page identity:
+ * Gleaming champagne gold gradient emblem, dark charcoal speed vector, and golden typography.
  */
 export default function BrandLogo({
   variant = 'full',
@@ -46,16 +46,17 @@ export default function BrandLogo({
 
   const emblem = (
     <div
-      className={`relative flex items-center justify-center shrink-0 bg-gradient-to-tr from-brand-900 via-brand-600 to-brand-500 text-white shadow-glow-brand ring-1 ring-white/20 transition-all duration-300 group-hover:scale-105 group-hover:rotate-1 ${emblemSizes[size]}`}
+      className={`relative flex items-center justify-center shrink-0 bg-gradient-to-tr from-brand-600 via-brand-500 to-brand-300 text-dark-950 shadow-glow-brand ring-1 ring-brand-300/50 transition-all duration-300 group-hover:scale-105 group-hover:rotate-1 ${emblemSizes[size]}`}
     >
-      <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
+      {/* Dynamic ambient highlight */}
+      <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
 
       {/* Aerodynamic Speed Logistics SVG Vector from better-icons */}
       <svg
         viewBox="0 0 24 24"
         width={svgSizes[size].width}
         height={svgSizes[size].height}
-        className="relative z-10 drop-shadow-md text-white"
+        className="relative z-10 drop-shadow-sm text-dark-950 transition-transform group-hover:translate-x-0.5"
         fill="currentColor"
         aria-hidden="true"
       >
@@ -82,11 +83,11 @@ export default function BrandLogo({
       <div className="flex flex-col text-start leading-tight">
         <div className="flex items-center gap-1.5">
           <span className={`font-black tracking-tight text-white ${titleSizes[size]}`}>
-            KHALED <span className="text-brand-500">EXPRESS</span>
+            KHALED <span className="text-brand-400">EXPRESS</span>
           </span>
         </div>
         {showSubtitle && (
-          <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">
+          <div className="text-[10px] text-brand-400/80 font-bold uppercase tracking-wider mt-0.5">
             {subtitleText}
           </div>
         )}

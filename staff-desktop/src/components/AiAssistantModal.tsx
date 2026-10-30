@@ -55,8 +55,8 @@ export default function AiAssistantModal({
       <div className="relative w-full max-w-3xl bg-dark-900 border border-dark-750 rounded-3xl p-6 sm:p-8 shadow-2xl my-8">
         <div className="flex items-center justify-between border-b border-dark-750 pb-4 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-700 to-brand-500 text-white flex items-center justify-center shadow-lg shadow-brand-600/30">
-              <Bot className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-brand-300 text-dark-950 flex items-center justify-center shadow-glow-brand ring-1 ring-brand-300/40">
+              <Bot className="w-6 h-6 text-dark-950" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -97,9 +97,9 @@ export default function AiAssistantModal({
             <button
               type="submit"
               disabled={loading || !query.trim()}
-              className="px-6 py-3.5 bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white font-bold rounded-2xl shadow-lg shadow-brand-600/30 text-xs flex items-center gap-2 transition-all active:scale-95"
+              className="px-6 py-3.5 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 disabled:opacity-50 text-dark-950 font-black rounded-2xl shadow-glow-brand text-xs flex items-center gap-2 transition-all active:scale-95"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-4 h-4 text-dark-950" />
               <span>{loading ? 'Analyse...' : t.ai_ask_btn}</span>
             </button>
           </div>

@@ -97,7 +97,7 @@ export default function IntakeModal({
         </button>
 
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-600/20 text-brand-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 border border-brand-500/30 flex items-center justify-center">
             <PlusCircle className="w-6 h-6" />
           </div>
           <div>
@@ -283,14 +283,14 @@ export default function IntakeModal({
               <button
                 type="button"
                 onClick={() => setPreferredSms('fr')}
-                className={`px-3 py-1 rounded-lg font-bold ${preferredSms === 'fr' ? 'bg-brand-600 text-white' : 'text-gray-400'}`}
+                className={`px-3 py-1 rounded-lg font-bold transition-all ${preferredSms === 'fr' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-gray-400 hover:text-white'}`}
               >
                 Français
               </button>
               <button
                 type="button"
                 onClick={() => setPreferredSms('ar')}
-                className={`px-3 py-1 rounded-lg font-bold ${preferredSms === 'ar' ? 'bg-brand-600 text-white' : 'text-gray-400'}`}
+                className={`px-3 py-1 rounded-lg font-bold transition-all ${preferredSms === 'ar' ? 'bg-brand-400 text-dark-950 font-black shadow-card' : 'text-gray-400 hover:text-white'}`}
               >
                 العربية
               </button>
@@ -300,7 +300,7 @@ export default function IntakeModal({
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white font-bold rounded-2xl shadow-xl shadow-brand-600/30 text-sm transition-all active:scale-95 mt-2"
+            className="w-full py-4 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 disabled:opacity-50 text-dark-950 font-black rounded-2xl shadow-glow-brand text-sm transition-all active:scale-95 mt-2"
           >
             {loading ? 'Enregistrement...' : t.btn_register_and_print}
           </button>

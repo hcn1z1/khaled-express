@@ -38,9 +38,9 @@ export default function StaffLogin({ onSuccess }: StaffLoginProps) {
   return (
     <div className="min-h-screen bg-dark-900 flex flex-col justify-center items-center p-4 relative overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-brand-600/15 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-brand-500/15 rounded-full blur-[140px] pointer-events-none" aria-hidden="true" />
 
-      <div className="w-full max-w-md bg-dark-850/80 backdrop-blur border border-dark-750 p-8 rounded-3xl shadow-2xl relative z-10">
+      <div className="w-full max-w-md bg-dark-900/90 backdrop-blur-xl border border-dark-750 p-8 rounded-3xl shadow-2xl relative z-10">
         <div className="flex flex-col items-center text-center mb-8">
           <BrandLogo
             variant="full"
@@ -93,7 +93,7 @@ export default function StaffLogin({ onSuccess }: StaffLoginProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 disabled:opacity-50 text-white font-bold rounded-xl shadow-glow-brand text-xs transition-all active:scale-95"
+            className="w-full py-3.5 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 disabled:opacity-50 text-dark-950 font-black rounded-xl shadow-glow-brand text-xs transition-all active:scale-95"
           >
             {loading ? 'Connexion en cours...' : 'Ouvrir la session de poste'}
           </button>
@@ -108,7 +108,7 @@ export default function StaffLogin({ onSuccess }: StaffLoginProps) {
             <button
               type="button"
               onClick={() => handleQuickLogin('0555000001', 'admin1234')}
-              className="p-2 rounded-xl bg-dark-850 hover:bg-dark-800 border border-dark-700 text-[11px] font-semibold text-brand-400"
+              className="p-2 rounded-xl bg-brand-500/10 hover:bg-brand-500/20 border border-brand-500/30 text-[11px] font-bold text-brand-300"
             >
               Directeur Admin
             </button>

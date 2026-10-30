@@ -35,19 +35,21 @@ export default function LandingContent() {
   const t = translations[lang];
   const isAr = lang === 'ar';
 
-  // Spotlight window: the van card is a cut-out revealing the same background
-  // image at full brightness, so the inner copy must stay pixel-aligned with
-  // the section-sized background layer. Track the card's offset within the
-  // section and the section size to keep both renderings identical.
+  // Spotlight scene: the van card is a cut-out revealing the same image at
+  // full brightness. The scene is rendered at its own scale (not stretched
+  // across the hero) and positioned so the whole van lands inside the card;
+  // the background copy and the window copy share one computed placement so
+  // they stay pixel-aligned.
   const heroSectionRef = useRef<HTMLElement | null>(null);
   const vanWindowRef = useRef<HTMLDivElement | null>(null);
-  const [windowOffset, setWindowOffset] = useState({ x: 0, y: 0 });
-  const [heroSize, setHeroSize] = useState({ w: 0, h: 0 });
+  const trustStripRef = useRef<HTMLDivElement | null>(null);
+  const [spot, setSpot] = useState({ secW: 0, secH: 0, bgH: 0, x: 0, y: 0, w: 0, h: 0 });
 
   const measureSpotlight = useCallback(() => {
     const section = heroSectionRef.current;
     const anchor = vanWindowRef.current;
     if (!section || !anchor) return;
+    const trustStrip = trustStripRef.current;
     let x = 0;
     let y = 0;
     let cur: HTMLElement | null = anchor;
@@ -56,18 +58,33 @@ export default function LandingContent() {
       y += cur.offsetTop;
       cur = cur.offsetParent as HTMLElement | null;
     }
-    setWindowOffset({ x, y });
-    setHeroSize({ w: section.clientWidth, h: section.clientHeight });
+    let bgH = 0;
+    let trustCur: HTMLElement | null = trustStrip;
+    while (trustCur && trustCur !== section) {
+      bgH += trustCur.offsetTop;
+      trustCur = trustCur.offsetParent as HTMLElement | null;
+    }
+    setSpot({
+      secW: section.clientWidth,
+      secH: section.clientHeight,
+      bgH: trustStrip && trustCur === section ? bgH : section.clientHeight,
+      x,
+      y,
+      w: anchor.offsetWidth,
+      h: anchor.offsetHeight,
+    });
   }, []);
 
   useLayoutEffect(() => {
     measureSpotlight();
     const section = heroSectionRef.current;
     const anchor = vanWindowRef.current;
-    if (!section || !anchor) return;
+    const trustStrip = trustStripRef.current;
+    if (!section || !anchor || !trustStrip) return;
     const ro = new ResizeObserver(() => measureSpotlight());
     ro.observe(section);
     ro.observe(anchor);
+    ro.observe(trustStrip);
     window.addEventListener('resize', measureSpotlight);
     const t = window.setTimeout(measureSpotlight, 350);
     document.fonts?.ready.then(() => measureSpotlight());
@@ -77,6 +94,26 @@ export default function LandingContent() {
       window.clearTimeout(t);
     };
   }, [measureSpotlight, isAr]);
+
+  // Geometry of the van inside the source image (fractions of width/height).
+  const SCENE_AR = 2752 / 1536;
+  const VAN = { cx: 0.64, cy: 0.61, halfW: 0.105 };
+  const sceneReady = spot.secW > 0 && spot.w > 0;
+  // Size the scene from the van's measured bounds so it fills the card and
+  // stays centered even when the scene extends beyond the hero's width.
+  const sceneW = sceneReady
+    ? (spot.w * 0.85) / (VAN.halfW * 2)
+    : 0;
+  const sceneH = sceneW / SCENE_AR;
+  const sceneLeft =
+    spot.x + spot.w / 2 - (isAr ? 1 - VAN.cx : VAN.cx) * sceneW;
+  const sceneTop = spot.y + spot.h / 2 - VAN.cy * sceneH;
+  const sceneBoxStyle = {
+    left: sceneLeft,
+    top: sceneTop,
+    width: sceneW,
+    height: sceneH,
+  };
 
   const trustPillars = [
     {
@@ -165,20 +202,36 @@ export default function LandingContent() {
         className="relative overflow-hidden min-h-[calc(100vh-5rem)] flex flex-col justify-between pt-6 pb-6 sm:pt-8 sm:pb-8 lg:pt-10 lg:pb-8"
       >
         {/* Cinematic Highway Landscape Background combining seamlessly with the hero section */}
-        <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
-          {/* Cinematic van-on-highway scene: van sits behind the card on the right, fading to pure dark behind the text */}
-          <Image
-            src="/hero-van-highway.jpg"
-            alt="Fourgon express Khaled Express sur l'autoroute Alger - El Eulma"
-            fill
-            priority
-            sizes="100vw"
-            className={`object-cover ${
-              isAr
-                ? 'object-left lg:object-[0%_center] -scale-x-105 scale-y-105'
-                : 'object-right lg:object-[100%_center] scale-105'
-            } opacity-45 transition-transform duration-1000`}
-          />
+        <div
+          className="absolute top-0 inset-x-0 pointer-events-none select-none z-0 overflow-hidden"
+          style={{ height: spot.bgH || '100%' }}
+          aria-hidden="true"
+        >
+          {/* Van-on-highway scene at its own scale: positioned so the van sits
+              inside the card window, fading into pure dark on every side */}
+          {sceneReady && (
+            <div
+              className="absolute"
+              style={{
+                ...sceneBoxStyle,
+                maskImage: isAr
+                  ? 'linear-gradient(to left, transparent, black 25%)'
+                  : 'linear-gradient(to right, transparent, black 25%)',
+                WebkitMaskImage: isAr
+                  ? 'linear-gradient(to left, transparent, black 25%)'
+                  : 'linear-gradient(to right, transparent, black 25%)',
+              }}
+            >
+              <Image
+                src="/hero-scene-v3.jpg"
+                alt=""
+                fill
+                priority
+                sizes="90vw"
+                className={`object-cover opacity-55 ${isAr ? '-scale-x-100' : ''}`}
+              />
+            </div>
+          )}
 
           {/* Smooth horizontal gradient fade: pure dark behind text for legibility, revealing highway behind the van */}
           <div
@@ -191,6 +244,7 @@ export default function LandingContent() {
           
           {/* Vertical vignettes for seamless transitions with header and trust pillars strip */}
           <div className="absolute inset-0 bg-gradient-to-b from-dark-950/90 via-transparent to-dark-950" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-dark-950/80 to-dark-950" />
 
           {/* Warm Champagne / Gold Radial Glow behind the van card */}
           <div className="absolute top-1/4 end-0 w-[620px] h-[520px] bg-gradient-to-br from-brand-500/20 via-brand-600/10 to-transparent rounded-full blur-[140px]" />
@@ -285,50 +339,36 @@ export default function LandingContent() {
                     ref={vanWindowRef}
                     className="hero-photo-overlay relative w-full aspect-[4/3] sm:aspect-[16/11]"
                   >
-                    {/* Spotlight copy of the background image, translated back so it
-                        coincides exactly with the section-sized background layer */}
+                    {/* Spotlight copy of the scene, translated back so it
+                        coincides exactly with the background placement */}
                     <div
                       aria-hidden="true"
                       className="absolute top-0 left-0 pointer-events-none"
                       style={{
-                        width: heroSize.w || '100%',
-                        height: heroSize.h || '100%',
-                        transform: `translate(${-windowOffset.x}px, ${-windowOffset.y}px)`,
-                        visibility: heroSize.w ? 'visible' : 'hidden',
+                        width: spot.secW || '100%',
+                        height: spot.secH || '100%',
+                        transform: `translate(${-spot.x}px, ${-spot.y}px)`,
+                        visibility: spot.secW ? 'visible' : 'hidden',
                       }}
                     >
-                      <Image
-                        src="/hero-van-highway.jpg"
-                        alt=""
-                        fill
-                        priority
-                        sizes="100vw"
-                        className={`object-cover transition-[filter] duration-700 group-hover:brightness-110 ${
-                          isAr
-                            ? 'object-left lg:object-[0%_center] -scale-x-105 scale-y-105'
-                            : 'object-right lg:object-[100%_center] scale-105'
-                        }`}
-                      />
+                      {sceneReady && (
+                        <div className="absolute" style={sceneBoxStyle}>
+                          <Image
+                            src="/hero-scene-v3.jpg"
+                            alt=""
+                            fill
+                            priority
+                            sizes="90vw"
+                            className={`object-cover transition-[filter] duration-700 group-hover:brightness-110 ${isAr ? '-scale-x-100' : ''}`}
+                          />
+                        </div>
+                      )}
                     </div>
 
                     {/* Subtle perimeter vignettes for clean box containment */}
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-950/85 via-transparent to-dark-950/30 pointer-events-none" />
                     <div className="absolute inset-0 bg-gradient-to-r from-dark-950/20 via-transparent to-dark-950/30 pointer-events-none" />
 
-                    {/* Khaled Express vehicle emblem badge overlay */}
-                    <div className="hero-photo-badge absolute bottom-4 start-4 sm:bottom-5 sm:start-5 flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-black/85 backdrop-blur-md border border-brand-500/35 text-white shadow-2xl">
-                      <div className="w-8 h-8 rounded-lg bg-brand-500/15 border border-brand-500/30 flex items-center justify-center shrink-0">
-                        <Truck className="w-4 h-4 text-brand-400" />
-                      </div>
-                      <div className="text-start leading-tight">
-                        <span className="block font-black text-xs text-white tracking-wide">
-                          KHALED <span className="text-brand-400">EXPRESS</span>
-                        </span>
-                        <span className="text-[10px] text-slate-300 font-mono tracking-wider">
-                          ALGER ↔ EL EULMA
-                        </span>
-                      </div>
-                    </div>
 
                     {/* Live Transit indicator pill top-right */}
                     <div className="absolute top-4 end-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-white shadow-lg text-[11px] font-semibold">
@@ -351,6 +391,7 @@ export default function LandingContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            ref={trustStripRef}
             className="mt-auto pt-6 sm:pt-8 pb-1 border-t border-dark-800/80"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
